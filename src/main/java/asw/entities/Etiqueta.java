@@ -1,4 +1,4 @@
-package asw.dbManagement.model;
+package asw.entities;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,14 +16,19 @@ public class Etiqueta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	Etiqueta() {
-	}
+	private String valor;
 	@ManyToMany
 	private Set<Incidence> incidencias = new HashSet<>();
 	
-	private String valor;
-
+	public Etiqueta() {
+	}
+	
+	public Etiqueta(Set<Incidence> incidencias, String valor) {
+		super();
+		this.incidencias = incidencias;
+		this.valor = valor;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -42,13 +47,4 @@ public class Etiqueta {
 	public void setIncidencias(Set<Incidence> incidencias) {
 		this.incidencias = incidencias;
 	}
-	public Etiqueta(Set<Incidence> incidencias, String valor) {
-		super();
-		this.incidencias = incidencias;
-		this.valor = valor;
-	}
-	
-	
-	
-
 }

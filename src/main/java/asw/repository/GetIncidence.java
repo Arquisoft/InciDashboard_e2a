@@ -1,6 +1,6 @@
-package asw.dbManagement;
+package asw.repository;
 
-import asw.dbManagement.model.Incidence;
+import asw.entities.Incidence;
 
 public interface GetIncidence {
 	

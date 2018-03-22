@@ -1,10 +1,13 @@
-package asw.dbManagement.model;
+package asw.entities;
 
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,7 +17,7 @@ import javax.persistence.Table;
 public class Agent {
 
 	@Id
-	@Column(unique = true)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String ID;
 	@Column(name = "PASSWORD")
 	private String password;
@@ -27,33 +30,12 @@ public class Agent {
 	@Column(name = "TIPO")
 	private int tipo;
 	@OneToMany(mappedBy="agente")
-	private Set<Incidence> incidencias;
-	
-	
-	public Set<Incidence> getIncidencias() {
-		return incidencias;
-	}
-	public void setIncidencias(Set<Incidence> incidencias) {
-		this.incidencias = incidencias;
-	}
-	
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
-	}
-	
-	
-	public void setID(String id)
-	{
-		this.ID = id;
-	}
-
+	private Set<Incidence> incidencias = new HashSet<>();
 
 	// Constructor vacio para JPA
 	public Agent() {
 	}
 
-	
-	
 	public Agent(String iD, String nombre, String localizacion, String email, int tipo) {
 		super();
 		this.ID = iD;
@@ -63,64 +45,55 @@ public class Agent {
 		this.tipo = tipo;
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Citizen [ID=" + ID + ", nombre=" + nombre + ", localizacion=" + localizacion + ", email=" + email
-				+ ", tipo=" + tipo + "]";
+	public Set<Incidence> getIncidencias() {
+		return incidencias;
 	}
-
-
+	
+	public void setIncidencias(Set<Incidence> incidencias) {
+		this.incidencias = incidencias;
+	}
 
 	public String getID() {
 		return ID;
 	}
+	
+	public void setID(String id)
+	{
+		this.ID = id;
+	}
+	
 	public String getNombreUsuario() {
 		return ID;
 	}
-
-	
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	
 
 	public String getLocalizacion() {
 		return localizacion;
 	}
 
-
-
 	public void setLocalizacion(String localizacion) {
 		this.localizacion = localizacion;
 	}
 
-
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
 
 	public int getTipo() {
 		return tipo;
 	}
 
-
-
-	public String getEmail() {
-		return email;
+	public String getNombre() {
+		return nombre;
 	}
 
-	
-
-	
-
-	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	public String getEmail() {
+		return email;
+	}
 	
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -151,7 +124,11 @@ public class Agent {
 		return true;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Citizen [ID=" + ID + ", nombre=" + nombre + ", localizacion=" + localizacion + ", email=" + email
+				+ ", tipo=" + tipo + "]";
+	}
 	
 	public void crearContraseña()
 	{

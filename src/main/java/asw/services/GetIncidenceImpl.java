@@ -1,12 +1,12 @@
-package asw.dbManagement.impl;
+package asw.services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import asw.dbManagement.GetIncidence;
-import asw.dbManagement.model.Incidence;
-import asw.dbManagement.repository.IncidenceRepository;
+import asw.entities.Incidence;
+import asw.repository.GetIncidence;
+import asw.repository.IncidenceRepository;
 
 @Service
 public class GetIncidenceImpl implements GetIncidence{

@@ -1,4 +1,4 @@
-package asw.dbManagement.model;
+package asw.entities;
 
 public class Association {
 

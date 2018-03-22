@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder;
 
 import asw.Application;
-import asw.dbManagement.repository.IncidenceRepository;
+import asw.repository.IncidenceRepository;
 import asw.streamKafka.productor.Topics;
 
 @Controller
