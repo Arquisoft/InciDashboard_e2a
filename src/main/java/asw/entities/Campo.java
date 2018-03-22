@@ -1,13 +1,13 @@
 package asw.entities;
 
 
-public class Propiedad {
+public class Campo {
 	
 	private String propiedad;
 	private String valor;
 	
 	
-	public Propiedad(String propiedad, String valor) {
+	public Campo(String propiedad, String valor) {
 		super();
 		this.propiedad = propiedad;
 		this.valor = valor;

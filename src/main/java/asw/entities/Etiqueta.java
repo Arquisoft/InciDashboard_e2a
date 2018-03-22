@@ -16,8 +16,9 @@ public class Etiqueta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String valor;
-	@ManyToMany
+	@ManyToMany(mappedBy="etiquetas")
 	private Set<Incidence> incidencias = new HashSet<>();
 	
 	public Etiqueta() {
