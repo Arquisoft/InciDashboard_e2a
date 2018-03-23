@@ -1,4 +1,4 @@
-package asw.dashboard;
+package asw.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder;
 
 import asw.repository.IncidenceRepository;
-import asw.streamKafka.Application;
+import asw.Application;
 import asw.streamKafka.productor.Topics;
 
 @Controller

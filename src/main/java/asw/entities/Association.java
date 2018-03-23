@@ -1,5 +1,6 @@
 package asw.entities;
 
+/*
 public class Association {
 
 	public static class Asignar {
@@ -30,3 +31,4 @@ public class Association {
 
 	
 }
+*/

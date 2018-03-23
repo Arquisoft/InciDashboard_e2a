@@ -1,92 +1,85 @@
 package asw.entities;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import asw.dbManagement.model.types.Status;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "TIncidence")
 public class Incidence {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String nombreUsuario;
-	private String nombreIncidencia;
+	@Id @GeneratedValue Long id;
+	
+	@ManyToOne
+	private Agent agent;
+	
+	private String nombre;
 	private String descripcion;
+	
 	private String localizacion;
-	private Object info;
-	@ManyToOne private Agent agente;
-	private Status status;
 	
-	@ManyToOne private Operator operatorAsignado;
+	@OneToMany(mappedBy="incidencia")
+	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
 	
-	@ManyToMany(cascade = { CascadeType.ALL })
-	@JoinTable(
-        name = "Incidencia_Etiquetas", 
-        joinColumns = { @JoinColumn(name = "incidence_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "etiqueta_id") }
-	)
-	private Set<Etiqueta> etiquetas = new HashSet<>();
+	@OneToMany(mappedBy="incidencia")
+	private Set<Campo> campos = new HashSet<Campo>(); //propiedad/valor
 	
-	private Set<Campo> campos = new HashSet<>(); 
+	@Enumerated(EnumType.STRING)
+	private Status estado;
 	
-	public Incidence() { }
+	@Temporal(value = TemporalType.TIMESTAMP)
+	private Date caducidad;
 	
-	public Incidence(String nombreUsuario, String nombreIncidencia, String descripcion,
-			String localizacion, Set<Etiqueta> etiquetas, Object info, Set<Campo> campos, Status status) {
-		super();
-		this.nombreUsuario = nombreUsuario;
-		this.nombreIncidencia = nombreIncidencia;
-		this.descripcion = descripcion;
-		this.localizacion = localizacion;
-		this.etiquetas = etiquetas;
-		this.info = info;
-		this.campos = campos;
-		this.status = status;
+	private String entidadAsignada;
+	private String comentarioOperario;
+	
+	@ManyToOne
+	private Operator operadorAsignado;
+	
+	public Incidence() {
+		
 	}
 
-	public String getdescripcion() {
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDescripcion() {
 		return descripcion;
 	}
 
-	public String getNombreUsuario() {
-		return nombreUsuario;
-	}
-
-	public Operator getOperatorAsignado() {
-		return operatorAsignado;
-	}
-
-	public void setOperatorAsignado(Operator operatorAsignado) {
-		this.operatorAsignado = operatorAsignado;
-	}
-
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
-
-	public String getNombreIncidencia() {
-		return nombreIncidencia;
-	}
-
-	public void setNombreIncidencia(String nombreIncidencia) {
-		this.nombreIncidencia = nombreIncidencia;
-	}
-
-	public void setdescripcion(String descripcion) {
+	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
@@ -99,74 +92,60 @@ public class Incidence {
 	}
 
 	public Set<Etiqueta> getEtiquetas() {
-		return new HashSet<Etiqueta>(etiquetas);
-		
-	}
-	
-	Set<Etiqueta> _getEtiquetas() {
 		return etiquetas;
 	}
 
-	void setEtiquetas(Set<Etiqueta> etiquetas) {
+	public void setEtiquetas(Set<Etiqueta> etiquetas) {
 		this.etiquetas = etiquetas;
 	}
 
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+	public Set<Campo> getCampos() {
+		return campos;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Incidence other = (Incidence) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+	public void setCampos(Set<Campo> campos) {
+		this.campos = campos;
 	}
 
-	public Object getInfo() {
-		return info;
+	public Status getEstado() {
+		return estado;
 	}
 
-	public void setInfo(Object info) {
-		this.info = info;
+	public void setEstado(Status estado) {
+		this.estado = estado;
 	}
 
-	public Agent getAgente() {
-		return agente;
+	public Date getCaducidad() {
+		return caducidad;
 	}
 
-	public void setAgente(Agent agente) {
-		this.agente = agente;
+	public void setCaducidad(Date caducidad) {
+		this.caducidad = caducidad;
 	}
 
-	public Status getStatus() {
-		return status;
+	public String getEntidadAsignada() {
+		return entidadAsignada;
 	}
 
-	public void setStatus(Status status) {
-		this.status = status;
+	public void setEntidadAsignada(String entidadAsignada) {
+		this.entidadAsignada = entidadAsignada;
+	}
+
+	public String getComentarioOperario() {
+		return comentarioOperario;
+	}
+
+	public void setComentarioOperario(String comentarioOperario) {
+		this.comentarioOperario = comentarioOperario;
+	}
+
+	public Operator getOperadorAsignado() {
+		return operadorAsignado;
+	}
+
+	public void setOperadorAsignado(Operator operadorAsignado) {
+		this.operadorAsignado = operadorAsignado;
 	}
 	
-	@Override
-	public String toString() {
-		return "Incidence [id=" + id + ", nombreUsuario=" + nombreUsuario + ", nombreIncidencia=" + nombreIncidencia
-				+ ", descripcion=" + descripcion + ", localizacion=" + localizacion + ", info=" + info + ", agente="
-				+ agente + ", status=" + status + ", operatorAsignado=" + operatorAsignado + ", etiquetas=" + etiquetas
-				+ ", campos=" + campos + "]";
-	}
 
 }

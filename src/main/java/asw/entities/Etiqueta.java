@@ -1,34 +1,33 @@
 package asw.entities;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TIncidence")
+@Table(name = "TEtiqueta")
 public class Etiqueta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String valor;
-	@ManyToMany(mappedBy="etiquetas")
-	private Set<Incidence> incidencias = new HashSet<>();
+	@ManyToOne
+	private Incidence incidencia;
 	
 	public Etiqueta() {
 	}
 	
-	public Etiqueta(Set<Incidence> incidencias, String valor) {
+	public Etiqueta(Incidence incidencia, String valor) {
 		super();
-		this.incidencias = incidencias;
+		this.incidencia = incidencia;
 		this.valor = valor;
 	}
+	
+	
 	
 	public Long getId() {
 		return id;
@@ -42,10 +41,13 @@ public class Etiqueta {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Set<Incidence> getIncidencias() {
-		return incidencias;
+
+	public Incidence getIncidencia() {
+		return incidencia;
 	}
-	public void setIncidencias(Set<Incidence> incidencias) {
-		this.incidencias = incidencias;
+	public void setIncidencia(Incidence incidencia) {
+		this.incidencia = incidencia;
 	}
+	
+	
 }

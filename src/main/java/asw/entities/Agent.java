@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,31 +17,38 @@ public class Agent {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String ID;
-	@Column(name = "PASSWORD")
+	private Long id;
+	
+	private String user;
 	private String password;
-	@Column(name = "NOMBRE")
 	private String nombre;
-	@Column(name = "LOCALIZACION")
 	private String localizacion;
-	@Column(name = "EMAIL")
 	private String email;
-	@Column(name = "TIPO")
 	private int tipo;
-	@OneToMany(mappedBy="agente")
+	@OneToMany(mappedBy="agent")
 	private Set<Incidence> incidencias = new HashSet<>();
 
 	// Constructor vacio para JPA
 	public Agent() {
 	}
 
-	public Agent(String iD, String nombre, String localizacion, String email, int tipo) {
+	public Agent(String id, String nombre, String localizacion, String email, int tipo) {
 		super();
-		this.ID = iD;
+		this.user = id;
 		this.nombre = nombre;
 		this.localizacion = localizacion;
 		this.email = email;
 		this.tipo = tipo;
+	}
+	
+	
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 
 	public Set<Incidence> getIncidencias() {
@@ -53,17 +59,17 @@ public class Agent {
 		this.incidencias = incidencias;
 	}
 
-	public String getID() {
-		return ID;
+	public Long getID() {
+		return id;
 	}
 	
-	public void setID(String id)
+	public void setID(Long id)
 	{
-		this.ID = id;
+		this.id = id;
 	}
 	
 	public String getNombreUsuario() {
-		return ID;
+		return user;
 	}
 
 	public String getLocalizacion() {
@@ -104,7 +110,7 @@ public class Agent {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ID == null) ? 0 : ID.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 	@Override
@@ -116,17 +122,17 @@ public class Agent {
 		if (getClass() != obj.getClass())
 			return false;
 		Agent other = (Agent) obj;
-		if (ID == null) {
-			if (other.ID != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!ID.equals(other.ID))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
 	
 	@Override
 	public String toString() {
-		return "Citizen [ID=" + ID + ", nombre=" + nombre + ", localizacion=" + localizacion + ", email=" + email
+		return "Citizen [ID=" + id + ", nombre=" + nombre + ", localizacion=" + localizacion + ", email=" + email
 				+ ", tipo=" + tipo + "]";
 	}
 	

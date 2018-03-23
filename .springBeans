@@ -9,7 +9,6 @@
 	<configs>
 	</configs>
 	<autoconfigs>
-		<config>java:asw.Application</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
