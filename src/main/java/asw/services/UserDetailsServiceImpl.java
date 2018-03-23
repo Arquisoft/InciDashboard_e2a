@@ -1,6 +1,9 @@
 package asw.services;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +34,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		User u = new User(operario.getName(), operario.getPassword(), grantedAuthorities);
 		return u;
 
+	}
+	
+	public Operator obtainOperatorForIncidence() {
+		List<Operator> list = operatorRepository.findAll();
+		Collections.sort(list, new Comparator<Operator>() {
+		    @Override
+		    public int compare(Operator o1, Operator o2) {
+		        return o1.getNumeroIncidencias() - o2.getNumeroIncidencias();
+		    }
+		});
+		return list.get(0);
 	}
 }

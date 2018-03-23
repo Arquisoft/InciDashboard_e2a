@@ -21,18 +21,16 @@ public class Operator {
 	
 	private String user;
 	private String password;
-	private String numeroIncidencias;
 	
 	@OneToMany(mappedBy = "operadorAsignado", cascade = CascadeType.ALL)
 	private Set<Incidence> incidencias = new HashSet<>();
 	
 	public Operator() {}
 
-	public Operator(String name, String password, String numeroIncidencias, Set<Incidence> incidencias) {
+	public Operator(String name, String password, Set<Incidence> incidencias) {
 		super();
 		this.user = name;
 		this.password = password;
-		this.numeroIncidencias = numeroIncidencias;
 		this.incidencias = incidencias;
 	}
 
@@ -60,13 +58,6 @@ public class Operator {
 		this.password = password;
 	}
 
-	public String getNumeroIncidencias() {
-		return numeroIncidencias;
-	}
-
-	public void setNumeroIncidencias(String numeroIncidencias) {
-		this.numeroIncidencias = numeroIncidencias;
-	}
 
 	public Set<Incidence> getIncidencias() {
 		return incidencias;
@@ -101,12 +92,16 @@ public class Operator {
 		return true;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "Operator [ID=" + id + ", name=" + user + ", password=" + password + ", numeroIncidencias="
-				+ numeroIncidencias + ", incidencias=" + incidencias + "]";
+		return "Operator [id=" + id + ", user=" + user + ", password=" + password + ", incidencias=" + incidencias
+				+ "]";
 	}
-	
+
+	public int getNumeroIncidencias() {
+		return incidencias.size();
+	}
 	
 	
 
