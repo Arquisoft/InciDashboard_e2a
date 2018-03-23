@@ -17,39 +17,39 @@ public class Operator {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String ID;
+	private Long id;
 	
-	private String name;
+	private String user;
 	private String password;
 	private String numeroIncidencias;
 	
-	@OneToMany(mappedBy = "operatorAsignado", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "operadorAsignado", cascade = CascadeType.ALL)
 	private Set<Incidence> incidencias = new HashSet<>();
 	
 	public Operator() {}
 
 	public Operator(String name, String password, String numeroIncidencias, Set<Incidence> incidencias) {
 		super();
-		this.name = name;
+		this.user = name;
 		this.password = password;
 		this.numeroIncidencias = numeroIncidencias;
 		this.incidencias = incidencias;
 	}
 
-	public String getID() {
-		return ID;
+	public Long getID() {
+		return id;
 	}
 
-	public void setID(String iD) {
-		ID = iD;
+	public void setID(Long iD) {
+		id = iD;
 	}
 
 	public String getName() {
-		return name;
+		return user;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.user = name;
 	}
 
 	public String getPassword() {
@@ -80,7 +80,7 @@ public class Operator {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ID == null) ? 0 : ID.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -93,17 +93,17 @@ public class Operator {
 		if (getClass() != obj.getClass())
 			return false;
 		Operator other = (Operator) obj;
-		if (ID == null) {
-			if (other.ID != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!ID.equals(other.ID))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Operator [ID=" + ID + ", name=" + name + ", password=" + password + ", numeroIncidencias="
+		return "Operator [ID=" + id + ", name=" + user + ", password=" + password + ", numeroIncidencias="
 				+ numeroIncidencias + ", incidencias=" + incidencias + "]";
 	}
 	

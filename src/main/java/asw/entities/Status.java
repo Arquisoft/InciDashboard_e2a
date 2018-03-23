@@ -1,4 +1,4 @@
-package asw.dbManagement.model.types;
+package asw.entities;
 
 public enum Status {
 	ABIERTO, CERRADO, ANULADA, EN_PROCESO 
