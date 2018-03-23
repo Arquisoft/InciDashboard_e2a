@@ -31,6 +31,8 @@ public class Incidence {
 	@ManyToOne private Agent agente;
 	private Status status;
 	
+	@ManyToOne private Operator operatorAsignado;
+	
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(
         name = "Incidencia_Etiquetas", 
@@ -62,6 +64,14 @@ public class Incidence {
 
 	public String getNombreUsuario() {
 		return nombreUsuario;
+	}
+
+	public Operator getOperatorAsignado() {
+		return operatorAsignado;
+	}
+
+	public void setOperatorAsignado(Operator operatorAsignado) {
+		this.operatorAsignado = operatorAsignado;
 	}
 
 	public void setNombreUsuario(String nombreUsuario) {
@@ -153,10 +163,10 @@ public class Incidence {
 	
 	@Override
 	public String toString() {
-		return "Incidence [nombreUsuario=" + nombreUsuario + ", nombreIncidencia="
-				+ nombreIncidencia + ", descripcion=" + descripcion + ", localizacion=" + localizacion + ", etiquetas="
-				+ etiquetas + ", info=" + info + ", campos=" + campos + ", agente=" + agente + ", status="
-				+ status + "]";
+		return "Incidence [id=" + id + ", nombreUsuario=" + nombreUsuario + ", nombreIncidencia=" + nombreIncidencia
+				+ ", descripcion=" + descripcion + ", localizacion=" + localizacion + ", info=" + info + ", agente="
+				+ agente + ", status=" + status + ", operatorAsignado=" + operatorAsignado + ", etiquetas=" + etiquetas
+				+ ", campos=" + campos + "]";
 	}
 
 }
