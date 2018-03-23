@@ -21,7 +21,7 @@ public class KafkaListenerFactory {
 	public static JacksonJsonParser parser = new JacksonJsonParser();
 
 	// CONSUMIDOR DE MENSAJES
-	
+
 	@Bean
 	KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> kafkaListenerContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();

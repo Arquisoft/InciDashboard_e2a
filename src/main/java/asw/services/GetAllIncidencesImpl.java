@@ -19,6 +19,7 @@ public class GetAllIncidencesImpl implements GetAllIncidences{
 	public GetAllIncidencesImpl(IncidenceRepository repository) {
 		this.incidenceRepository = repository;
 	}
+	
 	@Override
 	public List<Incidence> getIncidences() {
 		List<Incidence> incidencias = new ArrayList<Incidence>();
