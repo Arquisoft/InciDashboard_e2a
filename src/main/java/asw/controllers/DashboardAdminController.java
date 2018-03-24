@@ -23,7 +23,7 @@ public class DashboardAdminController {
 	private IncidenceRepository incidenceRepository;
 	private List<SseEmitter> sseEmitters = Collections.synchronizedList(new ArrayList<>());
 
-	// Inicio del dashboardAdmin que muestra las sugerencias
+	// Inicio del dashboardAdmin que muestra las incidencias
 	@RequestMapping("/dashboardAdmin")
 	public String showIncidenes(Model model) {
 		model.addAttribute("allIncidences", incidenceRepository.findAll());
