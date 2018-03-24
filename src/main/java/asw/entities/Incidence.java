@@ -28,7 +28,7 @@ public class Incidence {
 	private String nombre;
 	private String descripcion;
 	
-	@OneToOne(mappedBy="")
+	@OneToOne
 	private Location localizacion;
 	
 	@OneToMany(mappedBy="incidencia")
