@@ -29,7 +29,6 @@ La base de datos a utilizar es HSQLDB (**Se puede descargar [aquí](https://sour
 ### Apache Zookeeper y Apache Kafka
 Para poder ejecutar Apache Zookeeper y Apache Kafka, puedes descargar la carpeta desde [aquí](https://unioviedo-my.sharepoint.com/:u:/g/personal/uo251017_uniovi_es/EQPNYDwHknpCtZI1U1wK7QUBIEoZVywWTvmwFfO3upoA-A?e=kh1lYE).
 
-### Abrir Apache Zookeeper
 Una vez descargado el zip del paso anterior, abre la línea de comandos en la carpeta raíz de la carpeta *kafka_2.11-0.10.2.0*.
 
 Para Windows, ejecuta estos dos comandos en orden (el primero abre Zookeeper. El segundo, Apache Kafka):
