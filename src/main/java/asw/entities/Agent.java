@@ -22,7 +22,6 @@ public class Agent {
 	private String user;
 	private String password;
 	private String nombre;
-	private String localizacion;
 	private String email;
 	private int tipo;
 	@OneToMany(mappedBy="agent")
@@ -31,17 +30,21 @@ public class Agent {
 	// Constructor vacio para JPA
 	public Agent() {
 	}
+	
+	/** Para pruebas
+	 */
+	public Agent(String user, String pass) {
+		super();
+		this.user = user;
+		this.password = pass;
+	}
 
 	public Agent(String id, String nombre, String pass, String email, int tipo) {
-		super();
-		this.user = id;
+		this(id, pass);
 		this.nombre = nombre;
-		this.password = pass;
 		this.email = email;
 		this.tipo = tipo;
 	}
-	
-	
 
 	public String getUser() {
 		return user;
@@ -70,14 +73,6 @@ public class Agent {
 	
 	public String getNombreUsuario() {
 		return user;
-	}
-
-	public String getLocalizacion() {
-		return localizacion;
-	}
-
-	public void setLocalizacion(String localizacion) {
-		this.localizacion = localizacion;
 	}
 
 	public void setTipo(int tipo) {
@@ -132,7 +127,7 @@ public class Agent {
 	
 	@Override
 	public String toString() {
-		return "Citizen [ID=" + id + ", nombre=" + nombre + ", localizacion=" + localizacion + ", email=" + email
+		return "Citizen [ID=" + id + ", nombre=" + nombre + ", email=" + email
 				+ ", tipo=" + tipo + "]";
 	}
 	
