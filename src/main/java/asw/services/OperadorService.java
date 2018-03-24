@@ -1,7 +1,11 @@
 package asw.services;
 
+
 import java.util.Collections;
 import java.util.Comparator;
+
+import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +27,13 @@ public class OperadorService {
 	public void addOperator(Operator operator) {
 		operator.setPassword(bCryptPasswordEncoder.encode(operator.getPassword()));
 		operatorRepository.save(operator);
+	}
+	
+	public List<Operator> findAllOperators() {
+		List<Operator> operarios = new ArrayList<Operator>();
+		operatorRepository.findAll().forEach(operarios::add);
+		
+		return operarios;
 	}
 	
 	public void actualizarOperario(Operator op)
