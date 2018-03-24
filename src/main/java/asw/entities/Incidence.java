@@ -44,7 +44,9 @@ public class Incidence {
 	private Date caducidad;
 	
 	private String comentarioOperario;
-	
+	private TipoCampos tipoIncidencia;
+
+
 	@ManyToOne
 	private Operator operadorAsignado;
 	
@@ -151,6 +153,7 @@ public class Incidence {
 		campos.add( c );
 	}
 	
+
 	public String toStringCampos() {
 		String s = "";
 		for (Campo cp : campos) 
@@ -163,5 +166,21 @@ public class Incidence {
 		for (Etiqueta eq : etiquetas) 
 			s+= eq.getValor() + "\t";
 		return s;
+	}
+	
+	public TipoCampos getTipoIncidencia() {
+		return tipoIncidencia;
+	}
+
+	public void setTipoIncidencia(TipoCampos tipoIncidencia) {
+		for(Campo campo : campos){
+			if(campo.getTipo().equals(TipoCampos.CRITICO)){
+				this.tipoIncidencia = TipoCampos.CRITICO;
+			}
+		}
+		if(getTipoIncidencia()==null){
+			this.tipoIncidencia = TipoCampos.NO_CRITICO;
+		}
+
 	}
 }
