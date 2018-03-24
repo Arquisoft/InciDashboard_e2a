@@ -25,6 +25,11 @@ public class Campo {
 		this.valor = valor;
 	}
 	
+	public Campo(String clave, String valor, Incidence i)
+	{
+		this(clave, valor);
+		this.incidencia = i;
+	}
 	
 	public Long getId() {
 		return id;
