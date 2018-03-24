@@ -1,16 +1,13 @@
 package asw.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import asw.entities.Agent;
-import asw.repository.AgentRepository;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import asw.entities.Agent;
+import asw.entities.Location;
 import asw.repository.AgentRepository;
+import asw.repository.LocationRepository;
 
 @Service
 public class AgentService {
@@ -23,11 +20,8 @@ public class AgentService {
 	
 	public Agent findByName(String name) {
 		return agentRepo.findByNombre(name);
-
-
 	}
 		
-
 	public void addAgent(Agent agent) {
 		agent.setPassword(bCryptPasswordEncoder.encode(agent.getPassword()));
 		agentRepo.save(agent);
@@ -37,4 +31,5 @@ public class AgentService {
 	{
 		agentRepo.save( agente );
 	}
+	
 }

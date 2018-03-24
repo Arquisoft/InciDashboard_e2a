@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import asw.entities.Campo;
 import asw.entities.Incidence;
+import asw.entities.Location;
 import asw.repository.CamposRepository;
 import asw.repository.IncidenceRepository;
+import asw.repository.LocationRepository;
 
 @Service
 public class IncidenceService {
@@ -20,6 +22,9 @@ public class IncidenceService {
 	
 	@Autowired
 	public CamposRepository camposRepository;
+	
+	@Autowired
+	LocationRepository locRepo;
 	
 	public void addIncidence(Incidence incidence)
 	{
@@ -52,5 +57,10 @@ public class IncidenceService {
 			i.addCampo( c );
 			c.setincidencia( i );
 		}
+	}
+	
+	public void addLocation(Location loc)
+	{
+		locRepo.save( loc );
 	}
 }

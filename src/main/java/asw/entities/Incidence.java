@@ -16,8 +16,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.data.annotation.Transient;
-
 @Entity
 @Table(name = "TIncidence")
 public class Incidence {
@@ -30,7 +28,7 @@ public class Incidence {
 	private String nombre;
 	private String descripcion;
 	
-	@OneToOne
+	@OneToOne(mappedBy="")
 	private Location localizacion;
 	
 	@OneToMany(mappedBy="incidencia")

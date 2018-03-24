@@ -1,5 +1,8 @@
 package asw.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,13 @@ public class OperadorService {
 	public void addOperator(Operator operator) {
 		operator.setPassword(bCryptPasswordEncoder.encode(operator.getPassword()));
 		operatorRepository.save(operator);
+	}
+	
+	public List<Operator> findAllOperators() {
+		List<Operator> operarios = new ArrayList<Operator>();
+		operatorRepository.findAll().forEach(operarios::add);
+		
+		return operarios;
 	}
 	
 	public void actualizarOperario(Operator op)

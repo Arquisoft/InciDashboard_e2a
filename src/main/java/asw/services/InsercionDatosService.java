@@ -1,4 +1,4 @@
-/*package asw.services;
+package asw.services;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import asw.entities.Agent;
 import asw.entities.Campo;
 import asw.entities.Incidence;
+import asw.entities.Location;
 import asw.entities.Operator;
 import asw.entities.Status;
 
@@ -44,14 +45,28 @@ public class InsercionDatosService
 		operadoresService.addOperator( op2 );
 		operadoresService.addOperator( op3 );
 		
-		// Creamos las incidencias
-		Incidence inc1 = new Incidence("Incidencia 1", "12.1023, 33.100", agente1, Status.ABIERTO);
-		Incidence inc2 = new Incidence("Incidencia 2", "-45.90003, 11.933", agente1, Status.CERRADO);
-		Incidence inc3 = new Incidence("Incidencia 3", "-31.9503, 31.9373", agente2, Status.ANULADA);
-		Incidence inc4 = new Incidence("Incidencia 4", "-1.094, -33.02", agente2, Status.ABIERTO);
-		Incidence inc5 = new Incidence("Incidencia 5", "49.0239, -49.7199", agente3, Status.EN_PROCESO);
-		Incidence inc6 = new Incidence("Incidencia 6", "0.94851, -5.0911", agente3, Status.ABIERTO);
+		// Creo localizaciones
+		Location l1 = new Location(12.1023, 33.100);
+		Location l2 = new Location(-45.90003, 11.933);
+		Location l3 = new Location(-31.9503, 31.9373);
+		Location l4 = new Location(-1.094, -33.02);
+		Location l5 = new Location(49.0239, -49.7199);
+		Location l6 = new Location(0.94851, -5.0911);
+		inciService.addLocation(l1);
+		inciService.addLocation(l2);
+		inciService.addLocation(l3);
+		inciService.addLocation(l4);
+		inciService.addLocation(l5);
+		inciService.addLocation(l6);
 		
+		// Creamos las incidencias
+		Incidence inc1 = new Incidence("Incidencia 1", l1, agente1, Status.ABIERTO);
+		Incidence inc2 = new Incidence("Incidencia 2", l2, agente1, Status.CERRADO);
+		Incidence inc3 = new Incidence("Incidencia 3", l3, agente2, Status.ANULADA);
+		Incidence inc4 = new Incidence("Incidencia 4", l4, agente2, Status.ABIERTO);
+		Incidence inc5 = new Incidence("Incidencia 5", l5, agente3, Status.EN_PROCESO);
+		Incidence inc6 = new Incidence("Incidencia 6", l6, agente3, Status.ABIERTO);
+				
 		// Creamos campos para incidencias y los añadimos a la bbdd
 		Campo c1 = new Campo("propiedad", "valor");
 		Campo c2 = new Campo("nombre", "pablo");
@@ -70,7 +85,7 @@ public class InsercionDatosService
 		Set<Campo> campos4 = new HashSet<Campo>() {{ add(c7); }};
 		Set<Campo> campos5 = new HashSet<Campo>() {{ add(c8); }};
 		Set<Campo> campos6 = new HashSet<Campo>() {{ add(c9); add(c10); }};
-		
+				
 		inciService.addCampos( campos1 );
 		inciService.addCampos( campos2 );
 		inciService.addCampos( campos3 );
@@ -93,6 +108,20 @@ public class InsercionDatosService
 		inciService.addIncidence( inc4 );
 		inciService.addIncidence( inc5 );
 		inciService.addIncidence( inc6 );
+		
+		l1.setIncidence(inc1);
+		l2.setIncidence(inc2);
+		l3.setIncidence(inc3);
+		l4.setIncidence(inc4);
+		l5.setIncidence(inc5);
+		l6.setIncidence(inc6);
+		
+		inciService.addLocation( l1 );
+		inciService.addLocation( l2 );
+		inciService.addLocation( l3 );
+		inciService.addLocation( l4 );
+		inciService.addLocation( l5 );
+		inciService.addLocation( l6 );
 		
 		inciService.addCampos( campos1 );
 		inciService.addCampos( campos2 );
@@ -137,4 +166,3 @@ public class InsercionDatosService
 		operadoresService.actualizarOperario( op3 );
 	}
 }
-*/

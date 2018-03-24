@@ -23,7 +23,7 @@ public class Location {
 	private double longitud;
 
 	@OneToOne
-	private Agent user;
+	private Incidence incidence;
 
 	public Location() {
 	}
@@ -53,12 +53,20 @@ public class Location {
 	public void setLongitud(double longitud) {
 		this.longitud = longitud;
 	}
+	
+	public Incidence getIncidence() {
+		return incidence;
+	}
+
+	public void setIncidence(Incidence incidence) {
+		this.incidence = incidence;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((incidence == null) ? 0 : incidence.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(latitud);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -76,10 +84,10 @@ public class Location {
 		if (getClass() != obj.getClass())
 			return false;
 		Location other = (Location) obj;
-		if (user == null) {
-			if (other.user != null)
+		if (incidence == null) {
+			if (other.incidence != null)
 				return false;
-		} else if (!user.equals(other.user))
+		} else if (!incidence.equals(other.incidence))
 			return false;
 		return !(Double.doubleToLongBits(latitud) != Double.doubleToLongBits(other.latitud)
 				|| (Double.doubleToLongBits(longitud) != Double.doubleToLongBits(other.longitud)));
