@@ -6,37 +6,23 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Campo {
+public class CamposCriticos {
 	
 	@Id @GeneratedValue Long id;
 	
-	@ManyToOne
-	private Incidence incidencia;
-	
 	private String clave;
 	private String valor;
-	private TipoCampos tipo ;
 	
-	public Campo() {
+	public CamposCriticos() {
 		
 	}
 	
-	public Campo(String clave, String valor) {
+	public CamposCriticos(String clave, String valor) {
 		this.clave = clave;
 		this.valor = valor;
 	}
 	
-	public Campo(String clave, String valor, Incidence i)
-	{
-		this(clave, valor);
-		this.incidencia = i;
-	}
-	
-	public Campo(String clave, String valor, Incidence i, TipoCampos tipo)
-	{
-		this(clave, valor, i);
-		this.tipo = tipo;
-	}
+
 	
 	public Long getId() {
 		return id;
@@ -45,20 +31,7 @@ public class Campo {
 		this.id = id;
 	}
 	
-	public TipoCampos getTipo() {
-		return tipo;
-	}
-	public void setTipo(TipoCampos tipo) {
-		this.tipo = tipo;
-	}
 	
-	public Incidence getincidencia() {
-		return incidencia;
-	}
-	
-	public void setincidencia(Incidence incidencia) {
-		this.incidencia = incidencia;
-	}
 	
 	public String getClave() {
 		return clave;
