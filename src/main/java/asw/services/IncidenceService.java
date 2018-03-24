@@ -1,15 +1,23 @@
 package asw.services;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import asw.entities.Campo;
 import asw.entities.Incidence;
+
+import asw.entities.Operator;
+
 import asw.entities.Location;
+
 import asw.repository.CamposRepository;
 import asw.repository.IncidenceRepository;
 import asw.repository.LocationRepository;
@@ -59,8 +67,16 @@ public class IncidenceService {
 		}
 	}
 	
+
+	public Page<Incidence> getIncidencessForOperator(Pageable pageable, Operator user) {
+		Page<Incidence> inci = new PageImpl<Incidence>(new LinkedList<Incidence>());
+		inci = inciRepository.findAllByUser(pageable, user);
+		return inci;
+	} 
+
 	public void addLocation(Location loc)
 	{
 		locRepo.save( loc );
 	}
+
 }
