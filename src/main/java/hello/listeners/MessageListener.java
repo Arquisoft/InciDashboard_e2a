@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 
 import asw.entities.Campo;
+import asw.entities.Etiqueta;
 import asw.entities.Incidence;
 import asw.entities.Status;
 import asw.services.AgentService;
@@ -67,14 +68,18 @@ public class MessageListener {
     }
     
 
-    private Set<String> etiquetas(String etiquetas){
-    	HashSet<String> set=new HashSet<String>();
+    private Set<Etiqueta> etiquetas(String etiquetas){
+    	HashSet<Etiqueta> set=new HashSet<Etiqueta>();
     	String[] aux = etiquetas.split("$");
     	for(String s:aux) {
-    		set.add(s);
+    		Etiqueta etiqueta=new Etiqueta();
+    		etiqueta.setValor(s);
+    		set.add(etiqueta);
     	}
     	return set;
     }
+    
+    
     
     private Set<Campo> listaCampos(String campos){
     	HashSet<Campo> set=new HashSet<Campo>();

@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.Transient;
+
 @Entity
 @Table(name = "TIncidence")
 public class Incidence {
@@ -29,7 +31,8 @@ public class Incidence {
 	
 	private String localizacion;
 	
-	private Set<String> etiquetas = new HashSet<String>();
+	@OneToMany(mappedBy="incidencia")
+	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
 	
 	@OneToMany(mappedBy="incidencia")
 	private Set<Campo> campos = new HashSet<Campo>(); //propiedad/valor
@@ -96,12 +99,12 @@ public class Incidence {
 		this.localizacion = localizacion;
 	}
 
-	public Set<String> getEtiquetas() {
+	public Set<Etiqueta> getEtiquetas() {
 		return etiquetas;
 	}
 
-	public void setEtiquetas(Set<String> etiquetas) {
-		this.etiquetas = etiquetas;
+	public void setEtiquetas(Set<Etiqueta> set) {
+		this.etiquetas = set;
 	}
 
 	public Set<Campo> getCampos() {

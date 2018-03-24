@@ -22,7 +22,7 @@ public class AgentService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	public Agent findByName(String name) {
-		return agentRepo.findByName(name);
+		return agentRepo.findByNombre(name);
 
 
 	}

@@ -11,6 +11,6 @@ import asw.entities.Agent;
 @Repository
 public interface AgentRepository extends CrudRepository<Agent, Long>{
 	
-	Agent findByName(String name);
+	Agent findByNombre(String nombre);
 
 }
