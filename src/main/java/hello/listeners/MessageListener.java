@@ -13,6 +13,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import asw.entities.Campo;
 import asw.entities.Etiqueta;
 import asw.entities.Incidence;
+import asw.entities.Location;
 import asw.entities.Status;
 import asw.services.AgentService;
 import java.text.SimpleDateFormat;
@@ -47,7 +48,7 @@ public class MessageListener {
     	//descripcion
     	incidence.setDescripcion(camposSeparados[2]);
     	//localizacion
-    	incidence.setLocalizacion(camposSeparados[3]);
+    	incidence.setLocalizacion(location(camposSeparados[3]));
     	//etiquetas
     	incidence.setEtiquetas(etiquetas(camposSeparados[4]));
     	//lista de campos
@@ -57,7 +58,9 @@ public class MessageListener {
     	//comentario operario
     	incidence.setOperadorAsignado(null);
     	//caducidad falta el parseo a date
-    	incidence.setCaducidad(parseFecha(camposSeparados[7]));
+    	incidence.setCaducidad(parseFecha(camposSeparados[6]));
+    	//id
+    	incidence.setId(Long.parseLong(camposSeparados[7]));
     	
     	
     }
@@ -92,7 +95,7 @@ public class MessageListener {
 
 	private Campo claveValor(String s) {
 		Campo campo=new Campo();
-		String[] aux = s.split(",");
+		String[] aux = s.split(":");
 		campo.setClave(aux[0]);
 		campo.setValor(aux[1]);
 		return campo;
@@ -112,6 +115,16 @@ public class MessageListener {
         }
         return fechaDate;
     }
+	
+	private Location location(String s) {
+		Location loc=new Location();
+		String[] aux = s.split("$");
+		loc.setLatitud(Double.parseDouble(aux[0]));
+		loc.setLongitud(Double.parseDouble(aux[1]));
+		return loc;
+		
+		
+	}
     
 
 }

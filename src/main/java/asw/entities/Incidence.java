@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +30,8 @@ public class Incidence {
 	private String nombre;
 	private String descripcion;
 	
-	private String localizacion;
+	@OneToOne
+	private Location localizacion;
 	
 	@OneToMany(mappedBy="incidencia")
 	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
@@ -52,7 +54,7 @@ public class Incidence {
 		
 	}
 	
-	public Incidence(String nombreInc, String localizacion, Agent agente, Status status) {
+	public Incidence(String nombreInc, Location localizacion, Agent agente, Status status) {
 		this.nombre = nombreInc;
 		this.localizacion = localizacion;
 		this.agent = agente;
@@ -91,11 +93,11 @@ public class Incidence {
 		this.descripcion = descripcion;
 	}
 
-	public String getLocalizacion() {
+	public Location getLocalizacion() {
 		return localizacion;
 	}
 
-	public void setLocalizacion(String localizacion) {
+	public void setLocalizacion(Location localizacion) {
 		this.localizacion = localizacion;
 	}
 
