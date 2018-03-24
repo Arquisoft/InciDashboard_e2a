@@ -10,6 +10,6 @@ import asw.entities.CamposCriticos;
 @Repository
 public interface CamposCriticosRepository extends CrudRepository<CamposCriticos, Long>
 {
-	CamposCriticos findByCampo(String campo);
+	CamposCriticos findByClave(String clave);
 	List<CamposCriticos> findAll();
 } 

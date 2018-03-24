@@ -24,6 +24,11 @@ public class CamposCriticosService {
 		ccRepository.findAll().forEach(campos::add);
 		return campos;
 	}
+	
+	public CamposCriticos findByClave(String clave){
+		CamposCriticos campo = ccRepository.findByClave(clave);
+		return campo;
+	}
 
 	
 }
