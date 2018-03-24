@@ -153,6 +153,21 @@ public class Incidence {
 		campos.add( c );
 	}
 	
+
+	public String toStringCampos() {
+		String s = "";
+		for (Campo cp : campos) 
+			s+= cp.toString() + "\t";
+		return s;
+	}
+	
+	public String toStringEtiquetas() {
+		String s = "";
+		for (Etiqueta eq : etiquetas) 
+			s+= eq.getValor() + "\t";
+		return s;
+	}
+	
 	public TipoCampos getTipoIncidencia() {
 		return tipoIncidencia;
 	}
@@ -166,5 +181,6 @@ public class Incidence {
 		if(getTipoIncidencia()==null){
 			this.tipoIncidencia = TipoCampos.NO_CRITICO;
 		}
+
 	}
 }

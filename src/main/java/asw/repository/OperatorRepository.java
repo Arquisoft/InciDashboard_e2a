@@ -12,4 +12,5 @@ public interface OperatorRepository extends CrudRepository<Operator, Long>
 {
 	Operator findByUser(String username);
 	List<Operator> findAll();
+	
 } 
