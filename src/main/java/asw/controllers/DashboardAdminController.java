@@ -49,4 +49,25 @@ public class DashboardAdminController {
 			}
 		}
 	}
+	
+	@RequestMapping("/getEmitter")
+	public SseEmitter getEmitter() {
+		return newEmitter();
+	}
+
+	public SseEmitter newEmitter() {
+		
+		SseEmitter emitter = new SseEmitter(0L);
+		this.sseEmitters.add(emitter);
+		
+		emitter.onCompletion(() -> this.sseEmitters.remove(emitter));
+		emitter.onTimeout(() -> this.sseEmitters.remove(emitter));
+		
+		return emitter;
+
+	
+	
+	}
 }
+
+

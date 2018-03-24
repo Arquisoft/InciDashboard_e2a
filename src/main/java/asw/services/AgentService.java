@@ -5,24 +5,31 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import asw.entities.Agent;
+import asw.entities.Location;
 import asw.repository.AgentRepository;
+import asw.repository.LocationRepository;
 
 @Service
 public class AgentService {
 	
 	@Autowired
-	private AgentRepository agentsRepository;
+	AgentRepository agentRepo;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
+	
+	public Agent findByName(String name) {
+		return agentRepo.findByNombre(name);
+	}
+		
 	public void addAgent(Agent agent) {
 		agent.setPassword(bCryptPasswordEncoder.encode(agent.getPassword()));
-		agentsRepository.save(agent);
+		agentRepo.save(agent);
 	}
 	
 	public void actualizarAgente(Agent agente)
 	{
-		agentsRepository.save( agente );
+		agentRepo.save( agente );
 	}
+	
 }
