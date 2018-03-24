@@ -29,8 +29,7 @@ public class Incidence {
 	
 	private String localizacion;
 	
-	@OneToMany(mappedBy="incidencia")
-	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
+	private Set<String> etiquetas = new HashSet<String>();
 	
 	@OneToMany(mappedBy="incidencia")
 	private Set<Campo> campos = new HashSet<Campo>(); //propiedad/valor
@@ -91,11 +90,11 @@ public class Incidence {
 		this.localizacion = localizacion;
 	}
 
-	public Set<Etiqueta> getEtiquetas() {
+	public Set<String> getEtiquetas() {
 		return etiquetas;
 	}
 
-	public void setEtiquetas(Set<Etiqueta> etiquetas) {
+	public void setEtiquetas(Set<String> etiquetas) {
 		this.etiquetas = etiquetas;
 	}
 
