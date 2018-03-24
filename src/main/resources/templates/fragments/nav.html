@@ -12,12 +12,12 @@
 		
 		     <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
 		         <li id="incidencias"><a href="/incidencias/list">Incidencias</a></li>
-		         <li id="estadisticas"><a href="/estadisticas">Estadísticas</a></li>
+		         <li id="estadisticas"><a href="/estadisticas">Estadisticas</a></li>
 		     </ul>			
              
 			<ul class="nav navbar-nav navbar-right">
 				<li sec:authorize="!isAuthenticated()"><a href="/login">
-					 Identifícate
+					 Identificcate
 				</a></li>
 				<li sec:authorize="isAuthenticated()"><a href="/logout"> 
 					Desconectarse

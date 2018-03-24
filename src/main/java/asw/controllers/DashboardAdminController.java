@@ -16,16 +16,8 @@ import asw.streamKafka.productor.Topics;
 
 @Controller
 public class DashboardAdminController {
-/*	@Autowired
-	private IncidenceRepository incidenceRepository; */
-	private List<SseEmitter> sseEmitters = Collections.synchronizedList(new ArrayList<>());
 
-	// Inicio del dashboard que muestra las incidencias
-/*	@RequestMapping("/dashboardAdmin")
-	public String showIncidenes(Model model) {
-		model.addAttribute("allIncidences", incidenceRepository.findAll());
-		return "dashboardIncidences";
-	}*/
+	private List<SseEmitter> sseEmitters = Collections.synchronizedList(new ArrayList<>());
 
 	@RequestMapping(value = "/newIncidence")
 	@KafkaListener(topics = Topics.NEW_INCIDENCE)
