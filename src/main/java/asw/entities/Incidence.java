@@ -40,7 +40,6 @@ public class Incidence {
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date caducidad;
 	
-	private String entidadAsignada;
 	private String comentarioOperario;
 	
 	@ManyToOne
@@ -48,6 +47,13 @@ public class Incidence {
 	
 	public Incidence() {
 		
+	}
+	
+	public Incidence(String nombreInc, String localizacion, Agent agente, Status status) {
+		this.nombre = nombreInc;
+		this.localizacion = localizacion;
+		this.agent = agente;
+		this.estado = status;
 	}
 
 	public Long getId() {
@@ -122,14 +128,6 @@ public class Incidence {
 		this.caducidad = caducidad;
 	}
 
-	public String getEntidadAsignada() {
-		return entidadAsignada;
-	}
-
-	public void setEntidadAsignada(String entidadAsignada) {
-		this.entidadAsignada = entidadAsignada;
-	}
-
 	public String getComentarioOperario() {
 		return comentarioOperario;
 	}
@@ -146,5 +144,7 @@ public class Incidence {
 		this.operadorAsignado = operadorAsignado;
 	}
 	
-
+	public void addCampo(Campo c) {
+		campos.add( c );
+	}
 }

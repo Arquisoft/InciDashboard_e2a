@@ -32,11 +32,11 @@ public class Agent {
 	public Agent() {
 	}
 
-	public Agent(String id, String nombre, String localizacion, String email, int tipo) {
+	public Agent(String id, String nombre, String pass, String email, int tipo) {
 		super();
 		this.user = id;
 		this.nombre = nombre;
-		this.localizacion = localizacion;
+		this.password = pass;
 		this.email = email;
 		this.tipo = tipo;
 	}
@@ -156,5 +156,14 @@ public class Agent {
 	{
 		return password;
 	}
-
+	
+	public void setPassword(String password)
+	{
+		this.password = password;
+	}
+	
+	public void addIncidencia(Incidence incidence)
+	{
+		this.incidencias.add( incidence );
+	}
 }

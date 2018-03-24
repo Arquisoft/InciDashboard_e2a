@@ -14,7 +14,6 @@ import asw.entities.Campo;
 import asw.entities.Incidence;
 import asw.entities.Status;
 import asw.services.AgentService;
-
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
@@ -54,12 +53,10 @@ public class MessageListener {
     	incidence.setCampos(listaCampos(camposSeparados[5]));
     	//estado
     	incidence.setEstado(Status.ABIERTO);
-    	//entidad asignada
-    	incidence.setEntidadAsignada(null);
     	//comentario operario
     	incidence.setOperadorAsignado(null);
     	//caducidad falta el parseo a date
-    	incidence.setCaducidad(parseFecha(camposSeparados[8]));
+    	incidence.setCaducidad(parseFecha(camposSeparados[7]));
     	
     	
     }

@@ -26,13 +26,20 @@ public class Operator {
 	private Set<Incidence> incidencias = new HashSet<>();
 	
 	public Operator() {}
+	
+	public Operator(String username, String password)
+	{
+		super();
+		this.user = username;
+		this.password = password;
+	}
 
 	public Operator(String name, String password, Set<Incidence> incidencias) {
-		super();
-		this.user = name;
-		this.password = password;
+		this(name, password);
 		this.incidencias = incidencias;
 	}
+	
+	
 
 	public Long getID() {
 		return id;
@@ -103,6 +110,9 @@ public class Operator {
 		return incidencias.size();
 	}
 	
-	
+	public void addIncidencia(Incidence i)
+	{
+		incidencias.add( i );
+	}
 
 }
