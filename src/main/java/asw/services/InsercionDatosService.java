@@ -27,6 +27,9 @@ public class InsercionDatosService
 	@Autowired
 	private IncidenceService inciService;
 	
+	@Autowired
+	private RolesService rolesService;
+	
 	@SuppressWarnings("serial")
 	@PostConstruct
 	public void init() {
@@ -39,8 +42,12 @@ public class InsercionDatosService
 		agentsService.addAgent( agente3 );
 		
 		Operator op1 = new Operator("Pablo", "123456"); 
-		Operator op2 = new Operator("Pepe", "123456"); 
+		op1.setRole(rolesService.getRoles()[1]);
+		Operator op2 = new Operator("Pepe", "123456");
+		op2.setRole(rolesService.getRoles()[0]);
 		Operator op3 = new Operator("Juan", "123456"); 
+		op3.setRole(rolesService.getRoles()[0]);
+		
 		operadoresService.addOperator( op1 );
 		operadoresService.addOperator( op2 );
 		operadoresService.addOperator( op3 );
