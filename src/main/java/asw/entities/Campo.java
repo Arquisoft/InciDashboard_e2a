@@ -60,6 +60,13 @@ public class Campo {
 	
 	public void setValor(String valor) {
 		this.valor = valor;
-}
+	}
+
+	@Override
+	public String toString() {
+		return "Campo [id=" + id +  "clave=" + clave + ", valor=" + valor + "]";
+	}
+	
+	
 
 }

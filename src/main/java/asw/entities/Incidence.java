@@ -15,8 +15,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.data.annotation.Transient;
-
 @Entity
 @Table(name = "TIncidence")
 public class Incidence {
@@ -149,5 +147,19 @@ public class Incidence {
 	
 	public void addCampo(Campo c) {
 		campos.add( c );
+	}
+	
+	public String toStringCampos() {
+		String s = "";
+		for (Campo cp : campos) 
+			s+= cp.toString() + "\t";
+		return s;
+	}
+	
+	public String toStringEtiquetas() {
+		String s = "";
+		for (Etiqueta eq : etiquetas) 
+			s+= eq.getValor() + "\t";
+		return s;
 	}
 }

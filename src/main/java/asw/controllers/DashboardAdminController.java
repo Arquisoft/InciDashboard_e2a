@@ -5,30 +5,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder;
 
-import asw.repository.IncidenceRepository;
 import asw.Application;
 import asw.streamKafka.productor.Topics;
 
 @Controller
 public class DashboardAdminController {
-	@Autowired
-	private IncidenceRepository incidenceRepository;
+/*	@Autowired
+	private IncidenceRepository incidenceRepository; */
 	private List<SseEmitter> sseEmitters = Collections.synchronizedList(new ArrayList<>());
 
 	// Inicio del dashboard que muestra las incidencias
-	@RequestMapping("/dashboardAdmin")
+/*	@RequestMapping("/dashboardAdmin")
 	public String showIncidenes(Model model) {
 		model.addAttribute("allIncidences", incidenceRepository.findAll());
 		return "dashboardIncidences";
-	}
+	}*/
 
 	@RequestMapping(value = "/newIncidence")
 	@KafkaListener(topics = Topics.NEW_INCIDENCE)
