@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import asw.entities.Agent;
 import asw.entities.Campo;
+import asw.entities.CamposCriticos;
+import asw.entities.Etiqueta;
 import asw.entities.Incidence;
 import asw.entities.Location;
 import asw.entities.Operator;
@@ -29,6 +31,10 @@ public class InsercionDatosService
 	
 	@Autowired
 	private RolesService rolesService;
+	
+	@Autowired
+	private CamposCriticosService ccService;
+	
 	
 	@SuppressWarnings("serial")
 	@PostConstruct
@@ -100,6 +106,22 @@ public class InsercionDatosService
 		inciService.addCampos( campos5 );
 		inciService.addCampos( campos6 );
 		
+		// Creamos etiquetas
+		Etiqueta e1 = new Etiqueta("prueba");
+		Etiqueta e2 = new Etiqueta("prueba2");
+		Etiqueta e3 = new Etiqueta("prueba3");
+		Etiqueta e4 = new Etiqueta("prueba4");
+		Etiqueta e5 = new Etiqueta("prueba5");
+		Etiqueta e6 = new Etiqueta("prueba6");
+		
+		Set<Etiqueta> etiquetas1 = new HashSet<Etiqueta>() {{ add(e1); add(e2); }};
+		Set<Etiqueta> etiquetas2 = new HashSet<Etiqueta>() {{ add(e3); add(e4); }};
+		Set<Etiqueta> etiquetas3 = new HashSet<Etiqueta>() {{ add(e5); add(e6); }};
+		
+		inciService.addEtiqueta(etiquetas1);
+		inciService.addEtiqueta(etiquetas2);
+		inciService.addEtiqueta(etiquetas3);
+		
 		// Asignamos campos a incidencias
 		inciService.addCamposAIncidencia(inc1, campos1);
 		inciService.addCamposAIncidencia(inc2, campos2);
@@ -108,7 +130,12 @@ public class InsercionDatosService
 		inciService.addCamposAIncidencia(inc5, campos5);
 		inciService.addCamposAIncidencia(inc6, campos6);
 		
-		// Añadimos incidencias en la bbdd
+		// Asignamos etiquetas a incidencias
+		inciService.addEtiquetasAIncidencia(inc1, etiquetas1);
+		inciService.addEtiquetasAIncidencia(inc3, etiquetas2);
+		inciService.addEtiquetasAIncidencia(inc6, etiquetas3);
+		
+		// Actualizamos incidencias en la bbdd
 		inciService.addIncidence( inc1 );
 		inciService.addIncidence( inc2 );
 		inciService.addIncidence( inc3 );
@@ -116,6 +143,7 @@ public class InsercionDatosService
 		inciService.addIncidence( inc5 );
 		inciService.addIncidence( inc6 );
 		
+		// Actualizamos las localizaciones
 		l1.setIncidence(inc1);
 		l2.setIncidence(inc2);
 		l3.setIncidence(inc3);
@@ -130,12 +158,18 @@ public class InsercionDatosService
 		inciService.addLocation( l5 );
 		inciService.addLocation( l6 );
 		
+		// Actualizamos los campos
 		inciService.addCampos( campos1 );
 		inciService.addCampos( campos2 );
 		inciService.addCampos( campos3 );
 		inciService.addCampos( campos4 );
 		inciService.addCampos( campos5 );
 		inciService.addCampos( campos6 );
+		
+		// Actualizamos las etiquetas
+		inciService.addEtiqueta(etiquetas1);
+		inciService.addEtiqueta(etiquetas2);
+		inciService.addEtiqueta(etiquetas3);
 		
 		// Actualizamos las incidencias que han mandado los agentes
 		agente1.addIncidencia(inc1);
@@ -171,5 +205,10 @@ public class InsercionDatosService
 		operadoresService.actualizarOperario( op1 );
 		operadoresService.actualizarOperario( op2 );
 		operadoresService.actualizarOperario( op3 );
+		
+		// Creo y añado campos críticos
+		ccService.addCampoCritico(new CamposCriticos("Temperatura", "Extrema"));
+		ccService.addCampoCritico(new CamposCriticos("Fuego", "Llamaradas"));
+		ccService.addCampoCritico(new CamposCriticos("Lluvia", "Intensa"));
 	}
 }

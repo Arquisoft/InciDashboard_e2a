@@ -47,6 +47,6 @@ public class CriticFieldsController {
 		CamposCriticos ccModificar = critiService.getCampo(id);
 		ccModificar.setValor(cc.getValor());
 		critiService.addCampos(ccModificar);
-		return "redirect:/incidencias/details/" + id;
+		return "redirect:/campos";
 	}
 }

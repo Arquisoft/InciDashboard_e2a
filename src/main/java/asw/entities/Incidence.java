@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -26,6 +27,8 @@ public class Incidence {
 	private Agent agent;
 	
 	private String nombre;
+	
+	@Column(length=1000)
 	private String descripcion;
 	
 	@OneToOne(mappedBy="")
@@ -43,6 +46,7 @@ public class Incidence {
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date caducidad;
 	
+	@Column(length=1000)
 	private String comentarioOperario;
 	private TipoCampos tipoIncidencia;
 
@@ -153,7 +157,10 @@ public class Incidence {
 		campos.add( c );
 	}
 	
-
+	public void addEtiqueta(Etiqueta e) {
+		etiquetas.add( e );
+	}
+	
 	public String toStringCampos() {
 		String s = "";
 		for (Campo cp : campos) 
@@ -172,7 +179,7 @@ public class Incidence {
 		return tipoIncidencia;
 	}
 
-	public void setTipoIncidencia(TipoCampos tipoIncidencia) {
+	public void setTipoIncidencia() {
 		for(Campo campo : campos){
 			if(campo.getTipo().equals(TipoCampos.CRITICO)){
 				this.tipoIncidencia = TipoCampos.CRITICO;

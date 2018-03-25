@@ -1,11 +1,15 @@
 package asw.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import asw.entities.Agent;
 import asw.entities.Location;
+import asw.entities.Operator;
 import asw.repository.AgentRepository;
 import asw.repository.LocationRepository;
 
@@ -32,4 +36,11 @@ public class AgentService {
 		agentRepo.save( agente );
 	}
 	
+	public int prueba()
+	{
+		List<Agent> operarios = new ArrayList<Agent>();
+		agentRepo.findAll().forEach(operarios::add);
+		
+		return operarios.size();
+	}
 }

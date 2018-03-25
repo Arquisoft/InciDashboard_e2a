@@ -3,13 +3,15 @@ package asw.services;
 import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
 
 import asw.entities.CamposCriticos;
-import asw.entities.Incidence;
+
 import asw.repository.CamposCriticosRepository;
 
 @Service
@@ -18,6 +20,9 @@ public class CamposCriticosService {
 	@Autowired
 	private CamposCriticosRepository ccRepository;
 	
+	public void addCampoCritico(CamposCriticos cc) {
+		ccRepository.save( cc );
+	}
 	
 	public Page<CamposCriticos> getAll(Pageable pageable){
 		Page<CamposCriticos> campos = new PageImpl<CamposCriticos>(new LinkedList<CamposCriticos>());

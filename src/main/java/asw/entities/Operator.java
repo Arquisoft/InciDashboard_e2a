@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class Operator {
 	private String user;
 	private String password;
 	
-	@OneToMany(mappedBy = "operadorAsignado", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "operadorAsignado", cascade = CascadeType.ALL)
 	private Set<Incidence> incidencias = new HashSet<>();
 	
 	private String role;
