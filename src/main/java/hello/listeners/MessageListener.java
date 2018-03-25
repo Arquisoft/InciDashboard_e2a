@@ -1,28 +1,6 @@
 package hello.listeners;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.annotation.ManagedBean;
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.ActuatorMetricWriter;
-import org.springframework.kafka.annotation.KafkaListener;
-
-import asw.entities.Campo;
-import asw.entities.CamposCriticos;
-import asw.entities.Etiqueta;
-import asw.entities.Incidence;
-import asw.entities.Location;
-import asw.entities.Status;
-import asw.entities.TipoCampos;
-import asw.services.AgentService;
-import asw.services.CamposCriticosService;
-
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
 
 /**
  * Created by herminio on 28/12/16.

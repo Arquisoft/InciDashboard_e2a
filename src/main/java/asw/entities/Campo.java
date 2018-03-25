@@ -78,7 +78,7 @@ public class Campo {
 
 	@Override
 	public String toString() {
-		return "Campo [id=" + id +  "clave=" + clave + ", valor=" + valor + "]";
+		return "Campo [id=" + id +  " ,clave=" + clave + ", valor=" + valor + "]";
 	}
 	
 	

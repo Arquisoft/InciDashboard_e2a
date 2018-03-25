@@ -16,6 +16,7 @@ import asw.entities.Etiqueta;
 import asw.entities.Incidence;
 import asw.entities.Location;
 import asw.entities.Operator;
+import asw.entities.Status;
 import asw.repository.CamposRepository;
 import asw.repository.EtiquetaRepository;
 import asw.repository.IncidenceRepository;
@@ -94,5 +95,19 @@ public class IncidenceService {
 	{
 		locRepo.save( loc );
 	}
+	
+	public int cantidadIncidenciasTipo(Status st) {
+		List<Incidence> incidences = getIncidences();
+		int cont=0;
+		for (Incidence incidence : incidences) {
+			if(incidence.getEstado().equals(st))
+				cont++;
+		}
+		return cont;
+	}
+	
+
+	
+
 
 }
