@@ -21,7 +21,7 @@ public class DashboardAdminController {
 	private List<SseEmitter> sseEmitters = Collections.synchronizedList(new ArrayList<>());
 
 	/*
-	//@RequestMapping(value = "/newIncidence")
+	//@RequestMapping(value = "/newIncidence") 
 	@KafkaListener(topics = Topics.NEW_INCIDENCE)
 	public void newIncidence(String data) {
 		SseEventBuilder event = SseEmitter.event().name("newIncidence").data(data);
