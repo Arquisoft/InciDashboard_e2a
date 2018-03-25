@@ -41,13 +41,40 @@ C:\...\kafka_2.11-0.10.2.0>bin\windows\kafka-server-start.bat config\server.prop
 
 Para Linux:
 ```bash
-C:\...\kafka_2.11-0.10.2.0>bin/zookeeper-server-start.sh config/zookeeper.properties
+tu_prompt#kafka_2.11-0.10.2.0>bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 ```bash
-C:\...\kafka_2.11-0.10.2.0>bin/kafka-server-start.sh config/server.properties
+tu_prompt#kafka_2.11-0.10.2.0>bin/kafka-server-start.sh config/server.properties
 ```
 
-Por último, sitúate en la carpeta raíz del proyecto del repositorio, y ejecuta el siguiente comando:
+A continuación, sitúate en la carpeta raíz del proyecto del repositorio, y ejecuta el siguiente comando:
 ```bash
 C:\...\proyecto_dashboard>mvn spring-boot:run
+```
+
+### Ya tengo todo listo. ¿Cómo puedo enviar una incidencia?
+Abre una nueva terminal desde la carpeta *kafka_2.11-0.10.2.0*, y ejecuta el siguiente comando:
+
+**NOTAS ANTES DE EJECUTAR** 
+* La latitud y la longitud corresponden a la localización de la incidencia, separados por el símbolo del dollar ($).
+* Las etiquetas se separan por el símbolo del dollar ($). Ejemplo -> Fuego$Alud$Terremoto ...
+* La lista de campos clave valor funciona de la siguiente manera: Fuego:Extremo$Altitud:Normal$Temperatura:Normal ...
+* Para convertir la fecha de la incidencia a milisegundos, [pulse aquí](https://espanol.epochconverter.com/)
+
+WINDOWS
+```bash
+C:\...\kafka_2.11-0.10.2.0>bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic newIncidence
+Nombre agente@Nombre incidencia@Descripcion de la incidencia@Latitud$Longitud@Etiquetas@Lista de campos clave valor@Fecha en milisegundos
+```
+
+LINUX
+```bash
+tu_prompt#kafka_2.11-0.10.2.0>bin/kafka-console-producer.sh --broker-list localhost:9092 --topic newIncidence
+Nombre agente@Nombre incidencia@Descripcion de la incidencia@Latitud$Longitud@Etiquetas@Lista de campos clave valor@Fecha en milisegundos
+```
+
+Un ejemplo para copiar y pegar:
+```bash
+C:\...\kafka_2.11-0.10.2.0>bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic newIncidence
+Juan@Fuego en Oviedo@El parque San Francisco esta quemandose a causa de un cigarrillo mal apagado@43.3616142$-5.8506767@Fuego$Parque@Temperatura:Alta$Fuego:Extremo@1521893518784
 ```
