@@ -15,8 +15,8 @@ import asw.selenium.pageobjects.PO_View;
 
 //Ordenamos las pruebas por el nombre del método
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RedSocialTests {
-	static String PathFirefox = "C:\\Users\\Pablo\\Desktop\\hola\\Firefox46.win\\FirefoxPortable.exe";
+public class  DashBoardTests{
+	static String PathFirefox = "C:\\Users\\César Camblor\\Downloads\\Firefox46.0.win\\Firefox46.win\\FirefoxPortable.exe";
 	static WebDriver driver = getDriver(PathFirefox);
 	static String URL = "http://localhost:8090";
 
