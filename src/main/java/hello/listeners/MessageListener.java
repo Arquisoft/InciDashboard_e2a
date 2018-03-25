@@ -29,7 +29,7 @@ import java.text.ParseException;
  */
 @ManagedBean
 public class MessageListener {
-	
+	/*
 	@Autowired
 	AgentService agentService;
 	
@@ -145,5 +145,5 @@ public class MessageListener {
 		
 	}
     
-
+	*/
 }

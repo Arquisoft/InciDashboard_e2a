@@ -12,13 +12,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import asw.entities.Campo;
+import asw.entities.Etiqueta;
 import asw.entities.Incidence;
-
-import asw.entities.Operator;
-
 import asw.entities.Location;
-
+import asw.entities.Operator;
 import asw.repository.CamposRepository;
+import asw.repository.EtiquetaRepository;
 import asw.repository.IncidenceRepository;
 import asw.repository.LocationRepository;
 
@@ -33,6 +32,10 @@ public class IncidenceService {
 	
 	@Autowired
 	LocationRepository locRepo;
+	
+	@Autowired
+	private EtiquetaRepository etRepository;
+	
 	
 	public void addIncidence(Incidence incidence)
 	{
@@ -50,6 +53,11 @@ public class IncidenceService {
 		return incidencias;
 	}
 	
+	public void addEtiqueta(Set<Etiqueta> etiquetas) {
+		for(Etiqueta e : etiquetas)
+			etRepository.save( e );
+	}
+	
 	public void addCampos(Set<Campo> campos)
 	{
 		for (Campo c : campos)
@@ -64,6 +72,14 @@ public class IncidenceService {
 		{
 			i.addCampo( c );
 			c.setincidencia( i );
+		}
+	}
+	
+	public void addEtiquetasAIncidencia(Incidence i, Set<Etiqueta> etiquetas) {
+		for(Etiqueta e : etiquetas)
+		{
+			i.addEtiqueta( e );
+			e.setIncidencia( i );
 		}
 	}
 	

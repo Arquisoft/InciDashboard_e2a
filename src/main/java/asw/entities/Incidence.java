@@ -153,7 +153,10 @@ public class Incidence {
 		campos.add( c );
 	}
 	
-
+	public void addEtiqueta(Etiqueta e) {
+		etiquetas.add( e );
+	}
+	
 	public String toStringCampos() {
 		String s = "";
 		for (Campo cp : campos) 
@@ -172,7 +175,7 @@ public class Incidence {
 		return tipoIncidencia;
 	}
 
-	public void setTipoIncidencia(TipoCampos tipoIncidencia) {
+	public void setTipoIncidencia() {
 		for(Campo campo : campos){
 			if(campo.getTipo().equals(TipoCampos.CRITICO)){
 				this.tipoIncidencia = TipoCampos.CRITICO;
