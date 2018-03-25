@@ -137,7 +137,7 @@ public class MessageListener {
 	
 	private Location location(String s) {
 		Location loc=new Location();
-		String[] aux = s.split("$");
+		String[] aux = s.split("\\$");
 		loc.setLatitud(Double.parseDouble(aux[0]));
 		loc.setLongitud(Double.parseDouble(aux[1]));
 		return loc;

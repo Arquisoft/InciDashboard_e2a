@@ -1,16 +1,16 @@
 package asw.services;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import asw.entities.CamposCriticos;
-import asw.entities.Operator;
+import asw.entities.Incidence;
 import asw.repository.CamposCriticosRepository;
-import asw.repository.OperatorRepository;
 
 @Service
 public class CamposCriticosService {
@@ -19,15 +19,24 @@ public class CamposCriticosService {
 	private CamposCriticosRepository ccRepository;
 	
 	
-	public List<CamposCriticos> getAll(){
-		List<CamposCriticos> campos = new ArrayList<>();
-		ccRepository.findAll().forEach(campos::add);
+	public Page<CamposCriticos> getAll(Pageable pageable){
+		Page<CamposCriticos> campos = new PageImpl<CamposCriticos>(new LinkedList<CamposCriticos>());
+		campos=ccRepository.findAll(pageable);
 		return campos;
 	}
 	
 	public CamposCriticos findByClave(String clave){
 		CamposCriticos campo = ccRepository.findByClave(clave);
 		return campo;
+	}
+	
+	public CamposCriticos getCampo(Long identificador) {
+		return ccRepository.findOne( identificador );
+	}
+	
+	public void addCampos(CamposCriticos cc)
+	{
+		ccRepository.save(cc);
 	}
 
 	
