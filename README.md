@@ -2,7 +2,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a963e9cc71c4f0c951250172abd6d15)](https://www.codacy.com/app/PablooD9/InciDashboard_e2a?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/InciDashboard_e2a&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/Arquisoft/InciDashboard_e2a.svg?branch=master)](https://travis-ci.org/Arquisoft/InciDashboard_e2a)
-[![codecov](https://codecov.io/gh/Arquisoft/InciDashboard_e2a/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/InciDashboard_e2a)
+[![codecov](https://codecov.io/gh/Arquisoft/participants0/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/participants0)
 
 Dashboard - e2a
 
