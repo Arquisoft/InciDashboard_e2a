@@ -23,7 +23,7 @@
 					<tr th:each="critic : ${criticList}">
 						<td th:text="${critic.clave}"></td>
 						<td th:text="${critic.valor}"></td>
-						<td><a th:href="${'/campos/modificar/' + critic.id}">Modificar valor</a></td>
+						<td><a id="modificar" th:href="${'/campos/modificar/' + critic.id}">Modificar valor</a></td>
 					</tr>
 				</tbody>
 			</table>
