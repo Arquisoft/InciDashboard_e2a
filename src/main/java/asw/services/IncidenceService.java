@@ -89,6 +89,12 @@ public class IncidenceService {
 		inci = inciRepository.findAllByUser(pageable, user);
 		return inci;
 	} 
+	
+	
+	public List<Incidence> getIncidencessForOperatorForTest( Operator user) {
+		List<Incidence> inci = inciRepository.findAllByUser( user );
+		return inci;
+	} 
 
 	public void addLocation(Location loc)
 	{
