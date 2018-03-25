@@ -183,8 +183,8 @@ public class InsercionDatosService
 		agentsService.actualizarAgente(agente3);
 		
 		// Actualizamos las incidencias asignadas a operarios
-		inc1.setOperadorAsignado( op1 );
-		inc2.setOperadorAsignado( op1 );
+		inc1.setOperadorAsignado( op2 );
+		inc2.setOperadorAsignado( op2 );
 		inc3.setOperadorAsignado( op2 );
 		inc4.setOperadorAsignado( op2 );
 		inc5.setOperadorAsignado( op3 );
@@ -196,13 +196,13 @@ public class InsercionDatosService
 		inciService.addIncidence( inc5 );
 		inciService.addIncidence( inc6 );
 		
-		op1.addIncidencia(inc1);
-		op1.addIncidencia(inc2);
+		op2.addIncidencia(inc1);
+		op2.addIncidencia(inc2);
 		op2.addIncidencia(inc3);
 		op2.addIncidencia(inc4);
 		op3.addIncidencia(inc5);
 		op3.addIncidencia(inc6);
-		operadoresService.actualizarOperario( op1 );
+		operadoresService.actualizarOperario( op1 ); // no es realmente necesario
 		operadoresService.actualizarOperario( op2 );
 		operadoresService.actualizarOperario( op3 );
 		
