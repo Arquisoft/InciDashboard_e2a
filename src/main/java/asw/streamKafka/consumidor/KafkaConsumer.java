@@ -29,6 +29,9 @@ import asw.services.CamposCriticosService;
 import asw.services.IncidenceService;
 import asw.services.OperadorService;
 import asw.streamKafka.Topics;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 
 
 @Controller
@@ -54,6 +57,8 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "newIncidence")
     public void listen(String data) {
+    	 if(observer != null)
+             observer.onNext(data);
     	System.out.println(data);
         
        	Incidence incidencia = parseToIncidence( data );
@@ -194,4 +199,15 @@ public class KafkaConsumer {
 	private Operator asignarOperarioRandom() {
 		return opService.obtainOperatorForIncidence();
 	}
+	
+    public Observable<String> getObservable() {
+        return Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> observableEmitter) throws Exception {
+                observer = observableEmitter;
+            }
+        });
+    }
+    
+    private ObservableEmitter<String> observer;
 }
