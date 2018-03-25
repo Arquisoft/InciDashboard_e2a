@@ -1,11 +1,9 @@
 package asw.services;
 
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
-import java.util.ArrayList;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,4 +57,17 @@ public class OperadorService {
 	public Operator getOperatorByName(String name) {
 		return operatorRepository.findByUser(name); 
 	}
+	
+	
+	public Operator findOperatorWithMoreIncidnces() {
+		List<Operator> operadores = findAllOperators();
+		Operator elegido = operadores.get(0);
+		for (Operator op : operadores) {
+			if(op.getNumeroIncidencias() > elegido.getNumeroIncidencias())
+				elegido = op;
+		}
+		return elegido;
+	}
+	
+
 }

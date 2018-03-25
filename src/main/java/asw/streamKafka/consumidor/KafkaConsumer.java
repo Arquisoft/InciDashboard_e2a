@@ -1,8 +1,6 @@
 package asw.streamKafka.consumidor;
 
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,8 +9,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder;
 
 import asw.controllers.DashboardAdminController;
 import asw.entities.Agent;
@@ -28,7 +24,6 @@ import asw.services.AgentService;
 import asw.services.CamposCriticosService;
 import asw.services.IncidenceService;
 import asw.services.OperadorService;
-import asw.streamKafka.Topics;
 
 
 @Controller

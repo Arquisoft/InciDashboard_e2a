@@ -8,10 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import asw.entities.Agent;
-import asw.entities.Location;
-import asw.entities.Operator;
 import asw.repository.AgentRepository;
-import asw.repository.LocationRepository;
 
 @Service
 public class AgentService {
