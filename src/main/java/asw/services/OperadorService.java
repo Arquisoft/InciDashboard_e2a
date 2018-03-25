@@ -42,6 +42,7 @@ public class OperadorService {
 	}
 	
 	public Operator obtainOperatorForIncidence() {
+		RolesService rs = new RolesService();
 		List<Operator> list = operatorRepository.findAll();
 		Collections.sort(list, new Comparator<Operator>() {
 		    @Override
@@ -49,10 +50,13 @@ public class OperadorService {
 		        return o1.getNumeroIncidencias() - o2.getNumeroIncidencias();
 		    }
 		});
-		return list.get(0);
+		for (Operator operator : list) 
+			if(operator.getRole().equals(rs.getRoles()[0]))
+				return operator;
+		return null;
 	}
 	
 	public Operator getOperatorByName(String name) {
-		return operatorRepository.findByUser(name);
+		return operatorRepository.findByUser(name); 
 	}
 }
