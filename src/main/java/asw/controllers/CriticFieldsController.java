@@ -42,7 +42,7 @@ public class CriticFieldsController {
 		return "criticos/editFields";
 	}
 	
-	@RequestMapping(value = "/incidencias/edit/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/campos/modificar/{id}", method = RequestMethod.POST)
 	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute CamposCriticos cc) {
 		CamposCriticos ccModificar = critiService.getCampo(id);
 		ccModificar.setValor(cc.getValor());
