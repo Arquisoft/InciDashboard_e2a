@@ -80,7 +80,7 @@ Juan@Fuego en Oviedo@El parque San Francisco esta quemandose a causa de un cigar
 ```
 
 ### Como ejecutar las pruebas con Selenium:
-Primero descargaremos el Firefox46 portable que nos ejecutará las pruebas. [Enlace aquí](https://unioviedo-my.sharepoint.com/:u:/g/personal/uo251561_uniovi_es/EWUx_ZcFGUxIkp7L82LwjKoBsn_JCajO5in_tsUtyoUXeg?e=758ukC)
+Primero descargaremos el Firefox46 portable que nos ejecutará las pruebas. [Enlace aquí](https://unioviedo-my.sharepoint.com/:u:/g/personal/uo251561_uniovi_es/EUm3V6zrxuFFuvwX1aAxZzMBEzYnI7TKGxvIpe1zZLq7mw?e=0q0Piz)
 
 Despues en la clase DashBoardTests.java, llegaremos a ella siguiendo la siguiente jerarquía  /dashboard0/src/test/java/asw/selenium/DashBoardTests.java hay que modificar la variable PathFirefox y sustituirla
 por el path donde se haya descargado el Firefox. 
