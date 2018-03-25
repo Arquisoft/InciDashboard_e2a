@@ -1,32 +1,18 @@
 package hello.listeners;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.annotation.ManagedBean;
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
-
-import asw.entities.Campo;
-import asw.entities.Etiqueta;
-import asw.entities.Incidence;
-import asw.entities.Location;
-import asw.entities.Status;
-import asw.services.AgentService;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
 
 /**
  * Created by herminio on 28/12/16.
  */
 @ManagedBean
 public class MessageListener {
-	
+	/*
 	@Autowired
 	AgentService agentService;
+	
+	@Autowired
+	CamposCriticosService ccService;
 
 	private static final Logger logger = Logger.getLogger(MessageListener.class);
 
@@ -96,8 +82,19 @@ public class MessageListener {
 	private Campo claveValor(String s) {
 		Campo campo=new Campo();
 		String[] aux = s.split(":");
-		campo.setClave(aux[0]);
-		campo.setValor(aux[1]);
+		CamposCriticos cCritico = ccService.findByClave(aux[0]);
+		//Esto habria que hacerlo bien pero hace falta 
+		//saber primero como vienen exactamente el formato del valor de los campos
+		if(cCritico.getValor().equals(aux[1])){
+			campo.setClave(aux[0]);
+			campo.setValor(aux[1]);
+			campo.setTipo(TipoCampos.CRITICO);
+		}
+		else{
+			campo.setClave(aux[0]);
+			campo.setValor(aux[1]);
+			campo.setTipo(TipoCampos.NO_CRITICO);
+		}
 		return campo;
 		
 	}
@@ -118,7 +115,7 @@ public class MessageListener {
 	
 	private Location location(String s) {
 		Location loc=new Location();
-		String[] aux = s.split("$");
+		String[] aux = s.split("\\$");
 		loc.setLatitud(Double.parseDouble(aux[0]));
 		loc.setLongitud(Double.parseDouble(aux[1]));
 		return loc;
@@ -126,5 +123,5 @@ public class MessageListener {
 		
 	}
     
-
+	*/
 }

@@ -5,39 +5,29 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder;
 
-import asw.repository.IncidenceRepository;
 import asw.Application;
-import asw.streamKafka.productor.Topics;
 
 @Controller
 public class DashboardAdminController {
-	@Autowired
-	private IncidenceRepository incidenceRepository;
+
 	private List<SseEmitter> sseEmitters = Collections.synchronizedList(new ArrayList<>());
 
-	// Inicio del dashboard que muestra las incidencias
-	@RequestMapping("/dashboardAdmin")
-	public String showIncidenes(Model model) {
-		model.addAttribute("allIncidences", incidenceRepository.findAll());
-		return "dashboardIncidences";
-	}
-
-	@RequestMapping(value = "/newIncidence")
+	/*
+	//@RequestMapping(value = "/newIncidence") 
 	@KafkaListener(topics = Topics.NEW_INCIDENCE)
 	public void newIncidence(String data) {
 		SseEventBuilder event = SseEmitter.event().name("newIncidence").data(data);
 		sendData(event); 
 	}
+	*/
 	
-	void sendData(SseEventBuilder event) {
+	public void sendData(SseEventBuilder event) {
 		synchronized (this.sseEmitters) {
 			for (SseEmitter sseEmitter : this.sseEmitters) {
 				try {
@@ -50,6 +40,7 @@ public class DashboardAdminController {
 		}
 	}
 	
+	@CrossOrigin(origins = "http://localhost:8090") // manda respuesta a esta URL
 	@RequestMapping("/getEmitter")
 	public SseEmitter getEmitter() {
 		return newEmitter();
@@ -57,17 +48,19 @@ public class DashboardAdminController {
 
 	public SseEmitter newEmitter() {
 		
-		SseEmitter emitter = new SseEmitter(0L);
+		SseEmitter emitter = new SseEmitter(Long.MAX_VALUE); // el timeout
 		this.sseEmitters.add(emitter);
 		
 		emitter.onCompletion(() -> this.sseEmitters.remove(emitter));
 		emitter.onTimeout(() -> this.sseEmitters.remove(emitter));
 		
 		return emitter;
-
-	
-	
 	}
+
+	public List<SseEmitter> getSseEmitters() {
+		return sseEmitters;
+	}
+	
 }
 
 
