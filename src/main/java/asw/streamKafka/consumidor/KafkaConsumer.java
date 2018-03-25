@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Controller;
@@ -42,10 +41,7 @@ public class KafkaConsumer {
 	DashboardAdminController dsController;
 	
 	@Autowired
-	OperadorService opService;
-
-	private static final Logger logger = Logger.getLogger(KafkaConsumer.class);
-	
+	OperadorService opService;	
 
     @KafkaListener(topics = "newIncidence")
     public void listen(String data) {

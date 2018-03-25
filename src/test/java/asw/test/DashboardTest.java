@@ -1,6 +1,5 @@
 package asw.test;
 
-import java.net.URL;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,10 +8,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.client.RestTemplate;
 
 import asw.entities.Agent;
 import asw.entities.Campo;
@@ -30,15 +27,8 @@ public class DashboardTest {
 	private Incidence inc1, inc2, inc3, inc4, inc5;
 	private Campo c1, c2, c3, c4, c5, c6, c7, c8, c9, c10;
 	
-	
-    private int port = 8090;
-    private URL base ;
-	private RestTemplate template;
-
 	@Before
 	public void setUp() throws Exception {
-		this.base = new URL("http://localhost:" + port + "/");
-		template = new TestRestTemplate();
 		
 		a1 = new Agent("Pablo", "123456");
 		a2 = new Agent("Stephen", "123456");
@@ -80,6 +70,7 @@ public class DashboardTest {
 		inc5.addCampo(c9); inc5.addCampo(c10);
 	}
 	
+	@SuppressWarnings("serial")
 	@Test
 	public void getIncidenciasOperariosYAgentes() {
 		// Creo un operario y le asigno 3 incidencias

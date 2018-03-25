@@ -1,8 +1,6 @@
 package asw.controllers;
 
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import asw.entities.CamposCriticos;
-import asw.entities.Incidence;
-import asw.entities.Status;
 import asw.services.CamposCriticosService;
 
 @Controller

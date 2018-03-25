@@ -6,7 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import asw.entities.CamposCriticos;
-import asw.entities.Incidence;
 
 @Repository
 public interface CamposCriticosRepository extends CrudRepository<CamposCriticos, Long>
