@@ -176,15 +176,8 @@ public class KafkaConsumer {
     
 	public static Date parseFecha(String fecha)
     {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Date fechaDate = null;
-        try {
-            fechaDate = formato.parse(fecha);
-        } 
-        catch (ParseException ex) 
-        {
-            System.out.println(ex);
-        }
+	long fechaMilis = Long.parseLong(fecha);
+        Date fechaDate = new Date(fechaMilis);
         return fechaDate;
     }
 	
