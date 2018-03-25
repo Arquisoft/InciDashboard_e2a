@@ -27,6 +27,9 @@ public class Etiqueta {
 		this.valor = valor;
 	}
 	
+	public Etiqueta(String valor) {
+		this.valor = valor;
+	}
 	
 	
 	public Long getId() {

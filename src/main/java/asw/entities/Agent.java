@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class Agent {
 	private String nombre;
 	private String email;
 	private int tipo;
-	@OneToMany(mappedBy="agent")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="agent")
 	private Set<Incidence> incidencias = new HashSet<>();
 
 	// Constructor vacio para JPA

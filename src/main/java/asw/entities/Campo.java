@@ -15,6 +15,7 @@ public class Campo {
 	
 	private String clave;
 	private String valor;
+	private TipoCampos tipo ;
 	
 	public Campo() {
 		
@@ -31,11 +32,24 @@ public class Campo {
 		this.incidencia = i;
 	}
 	
+	public Campo(String clave, String valor, Incidence i, TipoCampos tipo)
+	{
+		this(clave, valor, i);
+		this.tipo = tipo;
+	}
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public TipoCampos getTipo() {
+		return tipo;
+	}
+	public void setTipo(TipoCampos tipo) {
+		this.tipo = tipo;
 	}
 	
 	public Incidence getincidencia() {
@@ -60,6 +74,13 @@ public class Campo {
 	
 	public void setValor(String valor) {
 		this.valor = valor;
-}
+	}
+
+	@Override
+	public String toString() {
+		return "Campo [id=" + id +  " ,clave=" + clave + ", valor=" + valor + "]";
+	}
+	
+	
 
 }
