@@ -40,9 +40,12 @@ public class InsercionDatosService
 	@PostConstruct
 	public void init() {
 		// Creamos los agentes y operarios y los añadimos a la bbdd
-		Agent agente1 = new Agent("agente1", "Pepe", "123456", "prueba@hotmail.com", 1);
-		Agent agente2 = new Agent("agente2", "Juan", "123456", "prueba@hotmail.com", 1); 
-		Agent agente3 = new Agent("agente3", "Alberta", "123456", "prueba@hotmail.com", 1);
+		//String contrasena, String nombreUsuario, String kind, long kindCode, String dni, String nombre,
+		//String apellidos, String email) 
+		Agent agente1 = new Agent("123456","Pepe", "Entity", 1, "111111Z", "Pepe", "Ramirez", "pepe@hotmail.com");
+		Agent agente2 = new Agent("123456","Juan", "Entity", 1, "211111Z", "Juan", "Martinez", "juan@hotmail.com");
+		Agent agente3 = new Agent("123456","Alberta", "Entity", 1, "311111Z", "Alberta", "Martinez", "alberta@hotmail.com");
+		
 		agentsService.addAgent( agente1 );
 		agentsService.addAgent( agente2 );
 		agentsService.addAgent( agente3 );

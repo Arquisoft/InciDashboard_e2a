@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,54 +13,81 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TAgent")
 public class Agent {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	private String user;
+	@GeneratedValue
+	Long id;
+
+	@Column(unique = true)
+	@NotNull
+	private String nombreUsuario;
+
+	@NotNull
 	private String password;
+
+	@NotNull
+	private String kind;
+
+	private Long kindCode;
+
+	@Column(unique = true)
+	private String dni;
+
 	private String nombre;
+
+	private String apellidos;
+
 	private String email;
-	private int tipo;
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="agent")
-	private Set<Incidence> incidencias = new HashSet<>();
 
-	// Constructor vacio para JPA
-	public Agent() {
-	}
+	@OneToMany(mappedBy = "agent", cascade = { CascadeType.ALL })
+	Set<Incidence> incidencias = new HashSet<Incidence>();
+
 	
-	/** Para pruebas
-	 */
-	public Agent(String user, String pass) {
-		super();
-		this.user = user;
-		this.password = pass;
+	public Agent() {
+
 	}
 
-	public Agent(String id, String nombre, String pass, String email, int tipo) {
-		this(id, pass);
+	public Agent(String username, String password) {
+		this(username);
+		this.password = password;
+	}
+
+	public Agent(String username) {
+		this.nombreUsuario = username;
+	}
+
+	public Agent(String username, String password, String kind) {
+		this(username, password);
+		this.kind = kind;
+	}
+
+	public Agent(String contrasena, String nombreUsuario, String kind, long kindCode, String dni, String nombre,
+			String apellidos, String email) {
+		this(nombreUsuario, contrasena, kind);
+		this.kindCode = kindCode;
+		this.dni = dni;
 		this.nombre = nombre;
+		this.apellidos = apellidos;
 		this.email = email;
-		this.tipo = tipo;
 	}
 
 	public String getUser() {
-		return user;
+		return nombreUsuario;
 	}
 
 	public void setUser(String user) {
-		this.user = user;
+		this.nombreUsuario = user;
 	}
 
 	public Set<Incidence> getIncidencias() {
 		return incidencias;
 	}
-	
+
 	public void setIncidencias(Set<Incidence> incidencias) {
 		this.incidencias = incidencias;
 	}
@@ -66,22 +95,21 @@ public class Agent {
 	public Long getID() {
 		return id;
 	}
-	
-	public void setID(Long id)
-	{
+
+	public void setID(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getNombreUsuario() {
-		return user;
+		return nombreUsuario;
 	}
 
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
+	public void setTipo(String tipo) {
+		this.kind = tipo;
 	}
 
-	public int getTipo() {
-		return tipo;
+	public String getTipo() {
+		return kind;
 	}
 
 	public String getNombre() {
@@ -95,12 +123,18 @@ public class Agent {
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	public String getApellidos() {
+		return apellidos;
+	}
 
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
 
 	@Override
 	public int hashCode() {
@@ -109,6 +143,7 @@ public class Agent {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -125,41 +160,43 @@ public class Agent {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Citizen [ID=" + id + ", nombre=" + nombre + ", email=" + email
-				+ ", tipo=" + tipo + "]";
+		return "Citizen [ID=" + id + ", nombre=" + nombre + ", email=" + email + ", tipo=" + kind + "]";
 	}
-	
-	public void crearContraseña()
-	{
+
+	public void crearContraseña() {
 		Random random = new Random();
-		
+
 		String pass = "";
 		int longitud_pass = random.nextInt(4) + 7;
-		
-		for (int i = 0; i < longitud_pass; i++) 
-		{
-			char caracterRandom = (char)(random.nextInt(26) + 'a'); // caracter de A a Z
+
+		for (int i = 0; i < longitud_pass; i++) {
+			char caracterRandom = (char) (random.nextInt(26) + 'a'); // caracter de A a Z
 			pass += caracterRandom;
 		}
-		
+
 		this.password = pass;
 	}
-	
-	public String getPassword()
-	{
+
+	public String getPassword() {
 		return password;
 	}
-	
-	public void setPassword(String password)
-	{
+
+	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public void addIncidencia(Incidence incidence)
-	{
-		this.incidencias.add( incidence );
+
+	public void addIncidencia(Incidence incidence) {
+		this.incidencias.add(incidence);
+	}
+
+	public Long getKindCode() {
+		return kindCode;
+	}
+
+	public void setKindCode(Long kindCode) {
+		this.kindCode = kindCode;
 	}
 }
