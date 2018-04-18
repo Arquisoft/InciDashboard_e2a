@@ -58,7 +58,7 @@ public class OperatorListarIncidenciasSteps {
     	Incidence in = new Incidence("i"+i,null,null,null);
     	iService.addIncidence(in);
     	o = oService.getOperatorByName("NonAddedOperator1") ;
-    	o.addIncidencia(in);
+    	o.addIncidencia(in) ;
     	in.setOperadorAsignado(o);
     	
     }
@@ -66,7 +66,7 @@ public class OperatorListarIncidenciasSteps {
 
   @When("^the operator list it$")
   public void the_operator_list_it() throws Throwable {
-	  list.addAll(iService.getIncidences()
+	  list.addAll(iService.getIncidences() 
 			  .stream()
 			  .filter(x -> x.getOperadorAsignado() !=null && x.getOperadorAsignado().equals(o))
 			  .collect(Collectors.toList()));
