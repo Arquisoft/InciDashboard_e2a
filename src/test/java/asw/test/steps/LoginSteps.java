@@ -33,8 +33,7 @@ public class LoginSteps {
   public void a_list_of_users(List<Agent> users) throws Throwable {
 	  prueba = users;
 	  for(int i = 0 ; i< users.size();i++){
-		  Agent agente = aService.findByName(users.get(i).getNombre());
-		  agentes.add(agente);
+		  aService.addAgent(users.get(i));
 	  }
   }
 
