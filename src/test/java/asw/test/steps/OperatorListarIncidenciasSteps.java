@@ -53,11 +53,11 @@ public class OperatorListarIncidenciasSteps {
   
   @Given("^(\\d+) incidences$")
   public void incidences(int incidences) throws Throwable {
-	 oService.addOperator(new Operator("pepe", "pepe2"));
+	 oService.addOperator(new Operator("NonAddedOperator", "pepe2"));
     for(int i = 0 ; i< incidences ;i++){
     	Incidence in = new Incidence("i"+i,null,null,null);
     	iService.addIncidence(in);
-    	o = oService.getOperatorByName("pepe");
+    	o = oService.getOperatorByName("NonAddedOperator");
     	o.addIncidencia(in);
     	in.setOperadorAsignado(o);
     	
