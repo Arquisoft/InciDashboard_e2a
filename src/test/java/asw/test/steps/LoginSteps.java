@@ -25,30 +25,8 @@ public class LoginSteps {
   
   @Autowired
   private AgentService aService;
-  
-  private List<Agent> agentes = new ArrayList<>();
-  private List<Agent> prueba = new ArrayList<>();
   int cantidadBase;
-  @Given("^a list of agents:$")
-  public void a_list_of_users(List<Agent> users) throws Throwable {
-	  prueba = users;
-	  for(int i = 0 ; i< users.size();i++){
-		  aService.addAgent(users.get(i));
-	  }
-  }
 
-  @SuppressWarnings("deprecation")
-  @When("^I login with nombre \"([^\"]*)\" and password \"([^\"]*)\"$")
-  public void i_login_with_name_and_password(String name, String password) throws Throwable {
-	 Assert.assertTrue(aService.findByName(name).getPassword().equals(password));
-  }
-  
- 
-  @Then("^I can send incidences$")
-  public void i_can_send_incidences(){
-	  
-  }
-  
  
 @Given("^there are no users$")
   public void there_are_no_users() throws Throwable {
