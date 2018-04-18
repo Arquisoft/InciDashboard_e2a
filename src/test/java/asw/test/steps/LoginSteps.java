@@ -40,8 +40,7 @@ public class LoginSteps {
   @SuppressWarnings("deprecation")
   @When("^I login with nombre \"([^\"]*)\" and password \"([^\"]*)\"$")
   public void i_login_with_name_and_password(String name, String password) throws Throwable {
-	  for(int i = 0 ; i< prueba.size();i++)
-		  Assert.assertTrue(prueba.get(i).getPassword().equals(agentes.get(i).getPassword()));
+	 Assert.assertTrue(aService.findByName(name).getPassword().equals(password));
   }
   
  
