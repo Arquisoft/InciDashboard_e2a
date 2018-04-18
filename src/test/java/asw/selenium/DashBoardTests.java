@@ -80,7 +80,7 @@ public class  DashBoardTests{
 		PO_View.checkElement(driver, "text", "Gestionar");
 	}
 	
-	// 3.2 probamos que al operario pueda acceder a estadisticas
+/*	// 3.2 probamos que al operario pueda acceder a estadisticas
 	@Test
 	public void test03part2() {
 		driver.get(baseUrl + "/");
@@ -88,7 +88,7 @@ public class  DashBoardTests{
 		PO_View.checkElement(driver, "text", "Bienvenido");
 		driver.get(baseUrl + "/estadisticas");
 		PO_View.checkElement(driver, "text", "Estadisticas");
-	}
+	}*/
 	
 	// 3.3 probamos que al operario no pueda acceder a los campos criticos
 	@Test
@@ -110,7 +110,7 @@ public class  DashBoardTests{
 		PO_View.checkElement(driver, "text", "Campos");
 	}
 	
-	// 4.2 probamos que al administrador si pueda acceder a las estadisticas
+/*	// 4.2 probamos que al administrador si pueda acceder a las estadisticas
 	@Test
 	public void test04part2() {
 		driver.get(baseUrl + "/");
@@ -118,7 +118,7 @@ public class  DashBoardTests{
 		PO_View.checkElement(driver, "text", "Bienvenido");
 		driver.get(baseUrl + "/estadisticas");
 		PO_View.checkElement(driver, "text", "Estadisticas");
-	}
+	}*/
 	
 	// 4.3 probamos que el usuario no pueda acceder a la lista de incidencias personal
 	@Test
