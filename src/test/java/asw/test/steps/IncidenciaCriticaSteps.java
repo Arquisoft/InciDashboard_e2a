@@ -46,15 +46,21 @@ public class IncidenciaCriticaSteps {
   @Given("^a critic incidence with one critic value$")
   public void a_critic_incidence_with_one_critic_value() throws Throwable {
     Campo c = new Campo("temperatura", "Extrema", null, TipoCampos.CRITICO);
-    Incidence i = iService.getIncidences().get(0);
+    Incidence i = new Incidence("incP", null, null, null);
     Set<Campo> s = new HashSet<Campo>();
     s.add(c);
     i.setCampos(s);
+    i.setTipoIncidencia();
+    iService.addIncidence(i);
   }
 
   @When("^I search it$")
   public void i_search_it() throws Throwable {
-	 i = iService.getIncidences().get(0);
+	 i = iService.getIncidences()
+			 .stream()
+			 .filter(x ->x.getNombre().equals("incP"))
+			 .findFirst()
+			 .orElse(null);
   }
 
   @Then("^it had critic state$")
