@@ -38,7 +38,7 @@ import cucumber.api.java.en.When;
 @IntegrationTest
 @WebAppConfiguration
 public class IncidenciaCriticaSteps {
-  
+	@Autowired
 	IncidenceService iService;
 	Incidence i ;
 

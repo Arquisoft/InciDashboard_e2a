@@ -43,8 +43,9 @@ import cucumber.api.java.en.When;
 @IntegrationTest
 @WebAppConfiguration
 public class OperatorListarIncidenciasSteps {
-  
+	@Autowired
 	IncidenceService iService;
+	@Autowired
 	OperadorService oService;
 	List<Incidence> list = new ArrayList<>() ;
 	Operator o ;
