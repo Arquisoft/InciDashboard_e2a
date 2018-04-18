@@ -57,7 +57,7 @@ public class OperatorListarIncidenciasSteps {
     for(int i = 0 ; i< incidences ;i++){
     	Incidence in = new Incidence("i"+i,null,null,null);
     	iService.addIncidence(in);
-    	o = oService.getOperatorByName("NonAddedOperator");
+    	o = oService.getOperatorByName("NonAddedOperator") ;
     	o.addIncidencia(in);
     	in.setOperadorAsignado(o);
     	
