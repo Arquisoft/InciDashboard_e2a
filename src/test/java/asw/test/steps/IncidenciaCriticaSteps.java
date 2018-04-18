@@ -65,6 +65,7 @@ public class IncidenciaCriticaSteps {
 
   @Then("^it had critic state$")
   public void  it_had_critic_state() throws Throwable {
+	  //
 	  Assert.isTrue(i.getTipoIncidencia().equals(TipoCampos.CRITICO));
   }
 
