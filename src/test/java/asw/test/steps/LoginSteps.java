@@ -1,5 +1,6 @@
 package asw.test.steps;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,8 +26,8 @@ public class LoginSteps {
   @Autowired
   private AgentService aService;
   
-  private List<Agent> agentes;
-  private List<Agent> prueba;
+  private List<Agent> agentes = new ArrayList<>();
+  private List<Agent> prueba = new ArrayList<>();
   int cantidadBase;
   @Given("^a list of agents:$")
   public void a_list_of_users(List<Agent> users) throws Throwable {
@@ -45,7 +46,7 @@ public class LoginSteps {
   }
   
  
-  @Then("I can send incidences")
+  @Then("^I can send incidences$")
   public void i_can_send_incidences(){
 	  
   }

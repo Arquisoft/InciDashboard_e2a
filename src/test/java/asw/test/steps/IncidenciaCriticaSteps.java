@@ -43,7 +43,7 @@ public class IncidenciaCriticaSteps {
 	Incidence i ;
 
   
-  @Given("a critic incidence with one critic value")
+  @Given("^a critic incidence with one critic value$")
   public void a_critic_incidence_with_one_critic_value() throws Throwable {
     Campo c = new Campo("temperatura", "Extrema", null, TipoCampos.CRITICO);
     Incidence i = iService.getIncidences().get(0);
@@ -52,12 +52,12 @@ public class IncidenciaCriticaSteps {
     i.setCampos(s);
   }
 
-  @When("I search it ")
+  @When("^I search it$")
   public void i_search_it() throws Throwable {
 	 i = iService.getIncidences().get(0);
   }
 
-  @Then(" it had critic state")
+  @Then("^it had critic state$")
   public void  it_had_critic_state() throws Throwable {
 	  Assert.isTrue(i.getTipoIncidencia().equals(TipoCampos.CRITICO));
   }

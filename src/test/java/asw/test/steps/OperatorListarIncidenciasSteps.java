@@ -51,7 +51,7 @@ public class OperatorListarIncidenciasSteps {
 	Operator o ;
 
   
-  @Given("\"(d+)\" incidences")
+  @Given("^\"(d+)\" incidences$")
   public void incidences(int incidences) throws Throwable {
 	 oService.addOperator(new Operator("pepe", "pepe2"));
     for(int i = 0 ; i< incidences ;i++){
@@ -64,7 +64,7 @@ public class OperatorListarIncidenciasSteps {
     }
   }
 
-  @When("the operator list it ")
+  @When("^the operator list it$")
   public void the_operator_list_it() throws Throwable {
 	  list.addAll(iService.getIncidences()
 			  .stream()
@@ -72,7 +72,7 @@ public class OperatorListarIncidenciasSteps {
 			  .collect(Collectors.toList()));
   }
 
-  @Then(" he see \"(d+)\" incidences")
+  @Then("^he see \"(d+)\" incidences$")
   public void  he_see_incidences(int incidences) throws Throwable {
 	  Assert.isTrue(list.size() == 3);
   }
