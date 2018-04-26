@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import asw.entities.Campo;
 import asw.entities.Etiqueta;
-import asw.entities.Incidence;
+import asw.entities.Incidencia;
 import asw.entities.Location;
 import asw.entities.Operator;
 import asw.entities.Status;
@@ -38,17 +38,17 @@ public class IncidenceService {
 	private EtiquetaRepository etRepository;
 	
 	
-	public void addIncidence(Incidence incidence)
+	public void addIncidence(Incidencia incidence)
 	{
 		inciRepository.save( incidence );
 	}
 	
-	public Incidence getIncidence(Long identificador) {
+	public Incidencia getIncidence(Long identificador) {
 		return inciRepository.findOne( identificador );
 	}
 	
-	public List<Incidence> getIncidences() {
-		List<Incidence> incidencias = new ArrayList<Incidence>();
+	public List<Incidencia> getIncidences() {
+		List<Incidencia> incidencias = new ArrayList<Incidencia>();
 		inciRepository.findAll().forEach(incidencias::add);
 		
 		return incidencias;
@@ -67,7 +67,7 @@ public class IncidenceService {
 		}
 	}
 	
-	public void addCamposAIncidencia(Incidence i, Set<Campo> campos)
+	public void addCamposAIncidencia(Incidencia i, Set<Campo> campos)
 	{
 		for(Campo c : campos)
 		{
@@ -76,7 +76,7 @@ public class IncidenceService {
 		}
 	}
 	
-	public void addEtiquetasAIncidencia(Incidence i, Set<Etiqueta> etiquetas) {
+	public void addEtiquetasAIncidencia(Incidencia i, Set<Etiqueta> etiquetas) {
 		for(Etiqueta e : etiquetas)
 		{
 			i.addEtiqueta( e );
@@ -85,8 +85,8 @@ public class IncidenceService {
 	}
 	
 
-	public Page<Incidence> getIncidencessForOperator(Pageable pageable, Operator user) {
-		Page<Incidence> inci = new PageImpl<Incidence>(new LinkedList<Incidence>());
+	public Page<Incidencia> getIncidencessForOperator(Pageable pageable, Operator user) {
+		Page<Incidencia> inci = new PageImpl<Incidencia>(new LinkedList<Incidencia>());
 		inci = inciRepository.findAllByUser(pageable, user);
 		return inci;
 	} 
@@ -97,9 +97,9 @@ public class IncidenceService {
 	}
 	
 	public int cantidadIncidenciasTipo(Status st) {
-		List<Incidence> incidences = getIncidences();
+		List<Incidencia> incidences = getIncidences();
 		int cont=0;
-		for (Incidence incidence : incidences) {
+		for (Incidencia incidence : incidences) {
 			if(incidence.getEstado().equals(st))
 				cont++;
 		}

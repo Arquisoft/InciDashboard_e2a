@@ -11,11 +11,11 @@ public class Campo {
 	@Id @GeneratedValue Long id;
 	
 	@ManyToOne
-	private Incidence incidencia;
+	private Incidencia incidencia;
 	
 	private String clave;
 	private String valor;
-	private TipoCampos tipo ;
+	private TipoCampos tipo ; 
 	
 	public Campo() {
 		
@@ -26,13 +26,13 @@ public class Campo {
 		this.valor = valor;
 	}
 	
-	public Campo(String clave, String valor, Incidence i)
+	public Campo(String clave, String valor, Incidencia i)
 	{
 		this(clave, valor);
 		this.incidencia = i;
 	}
 	
-	public Campo(String clave, String valor, Incidence i, TipoCampos tipo)
+	public Campo(String clave, String valor, Incidencia i, TipoCampos tipo)
 	{
 		this(clave, valor, i);
 		this.tipo = tipo;
@@ -52,11 +52,11 @@ public class Campo {
 		this.tipo = tipo;
 	}
 	
-	public Incidence getincidencia() {
+	public Incidencia getincidencia() {
 		return incidencia;
 	}
 	
-	public void setincidencia(Incidence incidencia) {
+	public void setincidencia(Incidencia incidencia) {
 		this.incidencia = incidencia;
 	}
 	

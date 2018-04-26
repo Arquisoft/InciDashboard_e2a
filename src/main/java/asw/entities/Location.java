@@ -5,11 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "location")
 public class Location {
 
 	@Id
@@ -23,7 +21,7 @@ public class Location {
 	private double longitud;
 
 	@OneToOne
-	private Incidence incidence;
+	private Incidencia incidencia;
 
 	public Location() {
 	}
@@ -54,19 +52,19 @@ public class Location {
 		this.longitud = longitud;
 	}
 	
-	public Incidence getIncidence() {
-		return incidence;
+	public Incidencia getIncidence() {
+		return incidencia;
 	}
 
-	public void setIncidence(Incidence incidence) {
-		this.incidence = incidence;
+	public void setIncidence(Incidencia incidence) {
+		this.incidencia = incidence;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((incidence == null) ? 0 : incidence.hashCode());
+		result = prime * result + ((incidencia == null) ? 0 : incidencia.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(latitud);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -84,10 +82,10 @@ public class Location {
 		if (getClass() != obj.getClass())
 			return false;
 		Location other = (Location) obj;
-		if (incidence == null) {
-			if (other.incidence != null)
+		if (incidencia == null) {
+			if (other.incidencia != null)
 				return false;
-		} else if (!incidence.equals(other.incidence))
+		} else if (!incidencia.equals(other.incidencia))
 			return false;
 		return !(Double.doubleToLongBits(latitud) != Double.doubleToLongBits(other.latitud)
 				|| (Double.doubleToLongBits(longitud) != Double.doubleToLongBits(other.longitud)));

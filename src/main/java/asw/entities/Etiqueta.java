@@ -5,10 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "TEtiqueta")
 public class Etiqueta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,12 +14,12 @@ public class Etiqueta {
 	
 	private String valor;
 	@ManyToOne
-	private Incidence incidencia;
+	private Incidencia incidencia;
 	
 	public Etiqueta() {
 	}
 	
-	public Etiqueta(Incidence incidencia, String valor) {
+	public Etiqueta(Incidencia incidencia, String valor) {
 		super();
 		this.incidencia = incidencia;
 		this.valor = valor;
@@ -45,10 +43,10 @@ public class Etiqueta {
 		this.id = id;
 	}
 
-	public Incidence getIncidencia() {
+	public Incidencia getIncidencia() {
 		return incidencia;
 	}
-	public void setIncidencia(Incidence incidencia) {
+	public void setIncidencia(Incidencia incidencia) {
 		this.incidencia = incidencia;
 	}
 	

@@ -12,7 +12,7 @@ import asw.entities.Agent;
 import asw.entities.Campo;
 import asw.entities.CamposCriticos;
 import asw.entities.Etiqueta;
-import asw.entities.Incidence;
+import asw.entities.Incidencia;
 import asw.entities.Location;
 import asw.entities.Operator;
 import asw.entities.Status;
@@ -76,12 +76,12 @@ public class InsercionDatosService
 		inciService.addLocation(l6);
 		
 		// Creamos las incidencias
-		Incidence inc1 = new Incidence("Incidencia 1", l1, agente1, Status.ABIERTO);
-		Incidence inc2 = new Incidence("Incidencia 2", l2, agente1, Status.CERRADO);
-		Incidence inc3 = new Incidence("Incidencia 3", l3, agente2, Status.ANULADA);
-		Incidence inc4 = new Incidence("Incidencia 4", l4, agente2, Status.ABIERTO);
-		Incidence inc5 = new Incidence("Incidencia 5", l5, agente3, Status.EN_PROCESO);
-		Incidence inc6 = new Incidence("Incidencia 6", l6, agente3, Status.ABIERTO);
+		Incidencia inc1 = new Incidencia("Incidencia 1", l1, agente1, Status.ABIERTO);
+		Incidencia inc2 = new Incidencia("Incidencia 2", l2, agente1, Status.CERRADO);
+		Incidencia inc3 = new Incidencia("Incidencia 3", l3, agente2, Status.ANULADA);
+		Incidencia inc4 = new Incidencia("Incidencia 4", l4, agente2, Status.ABIERTO);
+		Incidencia inc5 = new Incidencia("Incidencia 5", l5, agente3, Status.EN_PROCESO);
+		Incidencia inc6 = new Incidencia("Incidencia 6", l6, agente3, Status.ABIERTO);
 				
 		// Creamos campos para incidencias y los añadimos a la bbdd
 		Campo c1 = new Campo("propiedad", "valor");

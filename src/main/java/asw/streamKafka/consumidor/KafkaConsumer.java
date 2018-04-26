@@ -14,7 +14,7 @@ import asw.entities.Agent;
 import asw.entities.Campo;
 import asw.entities.CamposCriticos;
 import asw.entities.Etiqueta;
-import asw.entities.Incidence;
+import asw.entities.Incidencia;
 import asw.entities.Location;
 import asw.entities.Operator;
 import asw.entities.Status;
@@ -50,7 +50,7 @@ public class KafkaConsumer {
     public void listen(String data) {
     	System.out.println(data);
         
-       	Incidence incidencia = parseToIncidence( data );
+       	Incidencia incidencia = parseToIncidence( data );
        	inciService.addIncidence( incidencia );
       /*
         SseEventBuilder evento = SseEmitter.event().name((Topics.NEW_INCIDENCE)).data( incidencia );
@@ -58,12 +58,12 @@ public class KafkaConsumer {
        */
     }
     
-    public Incidence parseToIncidence(String data) {
+    public Incidencia parseToIncidence(String data) {
     	//NombreUsuario@nombreIncidencia@descripcion@localizacion@etiquetas_#1
 		//@listaCampos_#3@estado@entidadAsignada@comentarioOperario@caducidad
 		
 		String[] camposSeparados=separaCampos(data);
-		Incidence incidence=new Incidence();
+		Incidencia incidence=new Incidencia();
 		inciService.addIncidence( incidence ); // persistimos la incidencia en la bbdd
 		//agent
 		Agent agente = agentService.findByName(camposSeparados[0]);
@@ -95,7 +95,7 @@ public class KafkaConsumer {
 	}
     
     
-    private void actualizar(Incidence i, Agent ag, Location loc, Set<Etiqueta> ets, Set<Campo> campos, Operator op) {
+    private void actualizar(Incidencia i, Agent ag, Location loc, Set<Etiqueta> ets, Set<Campo> campos, Operator op) {
     	// Actualización del agente
     	ag.addIncidencia( i );
     	agentService.actualizarAgente(ag);

@@ -13,13 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "TIncidence")
-public class Incidence {
+public class Incidencia {
 
 	@Id @GeneratedValue Long id;
 	
@@ -32,7 +30,7 @@ public class Incidence {
 	private String descripcion;
 	
 	@OneToOne
-	private Location localizacion;
+	private Location location;
 	
 	@OneToMany(mappedBy="incidencia")
 	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
@@ -44,25 +42,28 @@ public class Incidence {
 	private Status estado;
 	
 	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date caducidad;
+	private Date fecha;
 	
 	@Column(length=1000)
 	private String comentarioOperario;
+	
 	private TipoCampos tipoIncidencia;
 
-
+	private String entidadAsignada; 
+	
 	@ManyToOne
 	private Operator operadorAsignado;
 	
-	public Incidence() {
+	public Incidencia() {
 		
 	}
 	
-	public Incidence(String nombreInc, Location localizacion, Agent agente, Status status) {
+	public Incidencia(String nombreInc, Location localizacion, Agent agente, Status status) {
 		this.nombre = nombreInc;
-		this.localizacion = localizacion;
+		this.location = localizacion;
 		this.agent = agente;
 		this.estado = status;
+		this.entidadAsignada = null;
 	}
 
 	public Long getId() {
@@ -98,11 +99,11 @@ public class Incidence {
 	}
 
 	public Location getLocalizacion() {
-		return localizacion;
+		return location;
 	}
 
 	public void setLocalizacion(Location localizacion) {
-		this.localizacion = localizacion;
+		this.location = localizacion;
 	}
 
 	public Set<Etiqueta> getEtiquetas() {
@@ -130,11 +131,11 @@ public class Incidence {
 	}
 
 	public Date getCaducidad() {
-		return caducidad;
+		return fecha;
 	}
 
 	public void setCaducidad(Date caducidad) {
-		this.caducidad = caducidad;
+		this.fecha = caducidad;
 	}
 
 	public String getComentarioOperario() {
@@ -189,5 +190,13 @@ public class Incidence {
 			this.tipoIncidencia = TipoCampos.NO_CRITICO;
 		}
 
+	}
+
+	public String getEntidadAsignada() {
+		return entidadAsignada;
+	}
+
+	public void setEntidadAsignada(String entidadAsignada) {
+		this.entidadAsignada = entidadAsignada;
 	}
 }

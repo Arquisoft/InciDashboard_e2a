@@ -4,19 +4,15 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "TAgent")
 public class Agent {
 
 	@Id
@@ -44,8 +40,8 @@ public class Agent {
 
 	private String email;
 
-	@OneToMany(mappedBy = "agent", cascade = { CascadeType.ALL })
-	Set<Incidence> incidencias = new HashSet<Incidence>();
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="agent")
+	Set<Incidencia> incidencias = new HashSet<Incidencia>();
 
 	
 	public Agent() {
@@ -84,11 +80,11 @@ public class Agent {
 		this.nombreUsuario = user;
 	}
 
-	public Set<Incidence> getIncidencias() {
+	public Set<Incidencia> getIncidencias() {
 		return incidencias;
 	}
 
-	public void setIncidencias(Set<Incidence> incidencias) {
+	public void setIncidencias(Set<Incidencia> incidencias) {
 		this.incidencias = incidencias;
 	}
 
@@ -188,7 +184,7 @@ public class Agent {
 		this.password = password;
 	}
 
-	public void addIncidencia(Incidence incidence) {
+	public void addIncidencia(Incidencia incidence) {
 		this.incidencias.add(incidence);
 	}
 

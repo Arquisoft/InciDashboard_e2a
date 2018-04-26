@@ -13,7 +13,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import asw.entities.Agent;
 import asw.entities.Campo;
-import asw.entities.Incidence;
+import asw.entities.Incidencia;
 import asw.entities.Location;
 import asw.entities.Operator;
 import asw.entities.Status;
@@ -24,7 +24,7 @@ public class DashboardTest {
 	
 	private Agent a1, a2, a3;
 	private Location l1, l2, l3, l4, l5;
-	private Incidence inc1, inc2, inc3, inc4, inc5;
+	private Incidencia inc1, inc2, inc3, inc4, inc5;
 	private Campo c1, c2, c3, c4, c5, c6, c7, c8, c9, c10;
 	
 	@Before
@@ -40,11 +40,11 @@ public class DashboardTest {
 		l4 = new Location(-99.0, 7.0);
 		l5 = new Location(-22, -10.0);
 		
-		inc1 = new Incidence("Incidencia 1", l1, a1, Status.ABIERTO);
-		inc2 = new Incidence("Incidencia 2", l2, a2, Status.CERRADO);
-		inc3 = new Incidence("Incidencia 3", l3, a3, Status.ANULADA);
-		inc4 = new Incidence("Incidencia 4", l4, a1, Status.EN_PROCESO);
-		inc5 = new Incidence("Incidencia 5", l5, a3, Status.ANULADA);
+		inc1 = new Incidencia("Incidencia 1", l1, a1, Status.ABIERTO);
+		inc2 = new Incidencia("Incidencia 2", l2, a2, Status.CERRADO);
+		inc3 = new Incidencia("Incidencia 3", l3, a3, Status.ANULADA);
+		inc4 = new Incidencia("Incidencia 4", l4, a1, Status.EN_PROCESO);
+		inc5 = new Incidencia("Incidencia 5", l5, a3, Status.ANULADA);
 		
 		a1.addIncidencia(inc1);
 		a1.addIncidencia(inc4);
@@ -74,7 +74,7 @@ public class DashboardTest {
 	@Test
 	public void getIncidenciasOperariosYAgentes() {
 		// Creo un operario y le asigno 3 incidencias
-		Operator op = new Operator("Pablo", "123456", new HashSet<Incidence>() {{ add(inc1); 
+		Operator op = new Operator("Pablo", "123456", new HashSet<Incidencia>() {{ add(inc1); 
 																				  add(inc2); 
 																				  add(inc3); }});
 
@@ -82,7 +82,7 @@ public class DashboardTest {
 		Assert.assertTrue(op.getIncidencias().size() == 3);
 		
 		// Compruebo el estado de sus incidencias
-		List<Incidence> incidences = op.getIncidencias().stream()
+		List<Incidencia> incidences = op.getIncidencias().stream()
 														.filter(inc -> inc.getEstado().equals(Status.ABIERTO))
 														.collect(Collectors.toList());
 		Assert.assertTrue(incidences.size() == 1);

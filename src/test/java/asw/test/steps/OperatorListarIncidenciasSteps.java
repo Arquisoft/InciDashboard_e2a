@@ -26,7 +26,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import asw.Application;
 import asw.entities.Campo;
-import asw.entities.Incidence;
+import asw.entities.Incidencia;
 import asw.entities.Operator;
 import asw.entities.TipoCampos;
 import asw.services.IncidenceService;
@@ -47,7 +47,7 @@ public class OperatorListarIncidenciasSteps {
 	IncidenceService iService;
 	@Autowired
 	OperadorService oService;
-	List<Incidence> list = new ArrayList<>() ;
+	List<Incidencia> list = new ArrayList<>() ;
 	Operator o ;
 
   
@@ -55,7 +55,7 @@ public class OperatorListarIncidenciasSteps {
   public void incidences(int incidences) throws Throwable {
 	 oService.addOperator(new Operator("NonAddedOperator2", "pepe2"));
     for(int i = 0 ; i< incidences ;i++){
-    	Incidence in = new Incidence("i"+i,null,null,null);
+    	Incidencia in = new Incidencia("i"+i,null,null,null);
     	iService.addIncidence(in );
     	o = oService.getOperatorByName("NonAddedOperator2") ;
     	o.addIncidencia(in) ;

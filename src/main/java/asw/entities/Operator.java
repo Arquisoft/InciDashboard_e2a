@@ -24,7 +24,7 @@ public class Operator {
 	private String password;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "operadorAsignado", cascade = CascadeType.ALL)
-	private Set<Incidence> incidencias = new HashSet<>();
+	private Set<Incidencia> incidencias = new HashSet<>();
 	
 	private String role;
 	
@@ -37,7 +37,7 @@ public class Operator {
 		this.password = password;
 	}
 
-	public Operator(String name, String password, Set<Incidence> incidencias) {
+	public Operator(String name, String password, Set<Incidencia> incidencias) {
 		this(name, password);
 		this.incidencias = incidencias;
 	}
@@ -74,11 +74,11 @@ public class Operator {
 	}
 
 
-	public Set<Incidence> getIncidencias() {
+	public Set<Incidencia> getIncidencias() {
 		return incidencias;
 	}
 
-	public void setIncidencias(Set<Incidence> incidencias) {
+	public void setIncidencias(Set<Incidencia> incidencias) {
 		this.incidencias = incidencias;
 	}
 	
@@ -126,7 +126,7 @@ public class Operator {
 		return incidencias.size();
 	}
 	
-	public void addIncidencia(Incidence i)
+	public void addIncidencia(Incidencia i)
 	{
 		incidencias.add( i );
 	}

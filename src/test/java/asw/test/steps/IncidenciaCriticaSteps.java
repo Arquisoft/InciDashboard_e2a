@@ -23,7 +23,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import asw.Application;
 import asw.entities.Campo;
-import asw.entities.Incidence;
+import asw.entities.Incidencia;
 import asw.entities.TipoCampos;
 import asw.services.IncidenceService;
 
@@ -40,13 +40,13 @@ import cucumber.api.java.en.When;
 public class IncidenciaCriticaSteps {
 	@Autowired
 	IncidenceService iService;
-	Incidence i ;
+	Incidencia i ;
 
   
   @Given("^a critic incidence with one critic value$")
   public void a_critic_incidence_with_one_critic_value() throws Throwable {
     Campo c = new Campo("temperatura", "Extrema", null, TipoCampos.CRITICO);
-    Incidence i = new Incidence("incP", null, null, null);
+    Incidencia i = new Incidencia("incP", null, null, null);
     Set<Campo> s = new HashSet<Campo>();
     s.add(c);
     i.setCampos(s);

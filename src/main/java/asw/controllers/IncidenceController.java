@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import asw.entities.Incidence;
+import asw.entities.Incidencia;
 import asw.entities.Operator;
 import asw.entities.Status;
 import asw.services.IncidenceService;
@@ -34,7 +34,7 @@ public class IncidenceController {
 	@RequestMapping(value = "/incidencias/list")
 	public String indicencias(Model model, Pageable pageable, Principal principal) {
 		Operator operador = operadorService.getOperatorByName( principal.getName());
-		Page<Incidence> incidences = new PageImpl<Incidence>(new LinkedList<Incidence>());
+		Page<Incidencia> incidences = new PageImpl<Incidencia>(new LinkedList<Incidencia>());
 		incidences = inciService.getIncidencessForOperator(pageable, operador);
 		model.addAttribute("incidenceList", incidences.getContent());
 		model.addAttribute("page", incidences);
@@ -56,8 +56,8 @@ public class IncidenceController {
 	}
 
 	@RequestMapping(value = "/incidencias/edit/{id}", method = RequestMethod.POST)
-	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute Incidence inci) {
-		Incidence original = inciService.getIncidence(id);
+	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute Incidencia inci) {
+		Incidencia original = inciService.getIncidence(id);
 		original.setComentarioOperario(inci.getComentarioOperario());
 		original.setEstado(inci.getEstado());
 		inciService.addIncidence(original);
