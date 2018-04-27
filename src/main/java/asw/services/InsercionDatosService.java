@@ -17,10 +17,10 @@ import asw.entities.Location;
 import asw.entities.Operator;
 import asw.entities.Status;
 
-//@Service
+@Service
 public class InsercionDatosService 
 {
-	/*
+	
 	@Autowired
 	private AgentService agentsService;
 	
@@ -38,7 +38,7 @@ public class InsercionDatosService
 	
 	
 	@SuppressWarnings("serial")
-	@PostConstruct
+	//@PostConstruct
 	public void init() {
 		// Creamos los agentes y operarios y los añadimos a la bbdd
 		//String contrasena, String nombreUsuario, String kind, long kindCode, String dni, String nombre,
@@ -215,5 +215,5 @@ public class InsercionDatosService
 		ccService.addCampoCritico(new CamposCriticos("Fuego", "Llamaradas"));
 		ccService.addCampoCritico(new CamposCriticos("Lluvia", "Intensa"));
 	}
-	*/
+	
 }
