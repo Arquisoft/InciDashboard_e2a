@@ -18,7 +18,6 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 @Configuration
 @EnableKafka
 public class KafkaConsumerFactory {
-	public static JacksonJsonParser parser = new JacksonJsonParser();
 
 	// CONSUMIDOR DE MENSAJES
 

@@ -21,7 +21,7 @@ public class Location {
 	private double longitud;
 
 	@OneToOne
-	private Incidencia incidencia;
+	private Incidencia incidence;
 
 	public Location() {
 	}
@@ -53,18 +53,18 @@ public class Location {
 	}
 	
 	public Incidencia getIncidence() {
-		return incidencia;
+		return incidence;
 	}
 
 	public void setIncidence(Incidencia incidence) {
-		this.incidencia = incidence;
+		this.incidence = incidence;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((incidencia == null) ? 0 : incidencia.hashCode());
+		result = prime * result + ((incidence == null) ? 0 : incidence.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(latitud);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -82,10 +82,10 @@ public class Location {
 		if (getClass() != obj.getClass())
 			return false;
 		Location other = (Location) obj;
-		if (incidencia == null) {
-			if (other.incidencia != null)
+		if (incidence == null) {
+			if (other.incidence != null)
 				return false;
-		} else if (!incidencia.equals(other.incidencia))
+		} else if (!incidence.equals(other.incidence))
 			return false;
 		return !(Double.doubleToLongBits(latitud) != Double.doubleToLongBits(other.latitud)
 				|| (Double.doubleToLongBits(longitud) != Double.doubleToLongBits(other.longitud)));

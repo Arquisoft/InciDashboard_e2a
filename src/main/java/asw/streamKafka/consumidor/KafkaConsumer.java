@@ -8,6 +8,8 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder;
 
 import asw.controllers.DashboardAdminController;
 import asw.entities.Agent;
@@ -23,9 +25,11 @@ import asw.services.AgentService;
 import asw.services.CamposCriticosService;
 import asw.services.IncidenceService;
 import asw.services.OperadorService;
+import asw.streamKafka.Topics;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import kafka.utils.Json;
 
 
 @Controller
@@ -48,20 +52,22 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "newIncidence")
     public void listen(String data) {
-    	System.out.println(data);
+    	//System.out.println(data);
         
-       	Incidencia incidencia = parseToIncidence( data );
-       	inciService.addIncidence( incidencia );
-      /*
+       	String incidencia = parseToIncidence( data );
+      
         SseEventBuilder evento = SseEmitter.event().name((Topics.NEW_INCIDENCE)).data( incidencia );
         this.dsController.sendData(evento);
-       */
+      
     }
     
-    public Incidencia parseToIncidence(String data) {
+    public String parseToIncidence(String data) {
     	//NombreUsuario@nombreIncidencia@descripcion@localizacion@etiquetas_#1
 		//@listaCampos_#3@estado@entidadAsignada@comentarioOperario@caducidad
 		
+    	//String inci_anterior = data.split(":\"")[1];
+    	//data = inci_anterior.split("\"}")[0];
+    	
 		String[] camposSeparados=separaCampos(data);
 		Incidencia incidence=new Incidencia();
 		inciService.addIncidence( incidence ); // persistimos la incidencia en la bbdd
@@ -91,8 +97,21 @@ public class KafkaConsumer {
 		
 		actualizar(incidence, agente, location, etiquetas, campos, operario);
 		
-		return incidence;
+		inciService.addIncidence( incidence );
+		
+		String json_incidencia = parseToJSON(incidence);
+		
+		return json_incidencia;
 	}
+    
+    private String parseToJSON(Incidencia incidencia) {
+    	// nombre_incidencia, estado, id
+    	String obj_json = "{ \"nombre_incidencia\" : \"" + incidencia.getNombre() + "\", " +
+    					  "\"estado\" : \"" + incidencia.getEstado() + "\", " +
+    					  "\"id\" : \"" + incidencia.getId() + "\" }";
+    						
+    	return obj_json;
+    }
     
     
     private void actualizar(Incidencia i, Agent ag, Location loc, Set<Etiqueta> ets, Set<Campo> campos, Operator op) {

@@ -1,6 +1,11 @@
-C:\Users\César Camblor\Desktop\repositorio\InciDashboard_e2a\src\test\java\asw\selenium\util\SeleniumUtils.java
-C:\Users\César Camblor\Desktop\repositorio\InciDashboard_e2a\src\test\java\asw\selenium\pageobjects\PO_LoginView.java
-C:\Users\César Camblor\Desktop\repositorio\InciDashboard_e2a\src\test\java\asw\selenium\pageobjects\PO_Properties.java
-C:\Users\César Camblor\Desktop\repositorio\InciDashboard_e2a\src\test\java\asw\test\DashboardTest.java
-C:\Users\César Camblor\Desktop\repositorio\InciDashboard_e2a\src\test\java\asw\selenium\DashBoardTests.java
-C:\Users\César Camblor\Desktop\repositorio\InciDashboard_e2a\src\test\java\asw\selenium\pageobjects\PO_View.java
+C:\Users\PabloD\Desktop\InciDashboard_e2a\src\test\java\asw\test\steps\LoginSteps.java
+C:\Users\PabloD\Desktop\InciDashboard_e2a\src\test\java\asw\test\steps\LandingSteps.java
+C:\Users\PabloD\Desktop\InciDashboard_e2a\src\test\java\asw\selenium\pageobjects\PO_View.java
+C:\Users\PabloD\Desktop\InciDashboard_e2a\src\test\java\asw\test\DashboardTest.java
+C:\Users\PabloD\Desktop\InciDashboard_e2a\src\test\java\asw\selenium\DashBoardTests.java
+C:\Users\PabloD\Desktop\InciDashboard_e2a\src\test\java\asw\test\CucumberTest.java
+C:\Users\PabloD\Desktop\InciDashboard_e2a\src\test\java\asw\selenium\pageobjects\PO_Properties.java
+C:\Users\PabloD\Desktop\InciDashboard_e2a\src\test\java\asw\test\steps\OperatorListarIncidenciasSteps.java
+C:\Users\PabloD\Desktop\InciDashboard_e2a\src\test\java\asw\test\steps\IncidenciaCriticaSteps.java
+C:\Users\PabloD\Desktop\InciDashboard_e2a\src\test\java\asw\selenium\util\SeleniumUtils.java
+C:\Users\PabloD\Desktop\InciDashboard_e2a\src\test\java\asw\selenium\pageobjects\PO_LoginView.java
