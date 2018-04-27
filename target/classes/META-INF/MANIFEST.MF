@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: dashboard0
 Implementation-Version: 0.0.1
-Built-By: Cￃﾩsar Camblor
+Built-By: Chus
 Implementation-Vendor-Id: es.uniovi.asw
 Build-Jdk: 1.8.0_161
 Implementation-URL: http://projects.spring.io/spring-boot/dashboard0/

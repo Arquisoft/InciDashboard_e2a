@@ -23,6 +23,7 @@ import asw.services.AgentService;
 import asw.services.CamposCriticosService;
 import asw.services.IncidenceService;
 import asw.services.OperadorService;
+import asw.streamKafka.Topics;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -46,7 +47,7 @@ public class KafkaConsumer {
 	@Autowired
 	OperadorService opService;	
 
-    @KafkaListener(topics = "newIncidence")
+    @KafkaListener(topics = Topics.INCIDENCIAS)
     public void listen(String data) {
     	System.out.println(data);
         
