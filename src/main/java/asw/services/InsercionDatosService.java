@@ -17,9 +17,10 @@ import asw.entities.Location;
 import asw.entities.Operator;
 import asw.entities.Status;
 
-@Service
+//@Service
 public class InsercionDatosService 
 {
+	/*
 	@Autowired
 	private AgentService agentsService;
 	
@@ -214,4 +215,5 @@ public class InsercionDatosService
 		ccService.addCampoCritico(new CamposCriticos("Fuego", "Llamaradas"));
 		ccService.addCampoCritico(new CamposCriticos("Lluvia", "Intensa"));
 	}
+	*/
 }
