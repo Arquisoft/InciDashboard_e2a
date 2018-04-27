@@ -50,7 +50,7 @@ public class KafkaConsumer {
 	@Autowired
 	OperadorService opService;	
 
-    @KafkaListener(topics = "newIncidence")
+    @KafkaListener(topics = Topics.NEW_INCIDENCE)
     public void listen(String data) {
     	//System.out.println(data);
         
