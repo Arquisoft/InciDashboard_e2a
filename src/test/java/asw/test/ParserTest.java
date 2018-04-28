@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import asw.Application;
-import asw.services.InsercionDatosService;
 import asw.streamKafka.consumidor.KafkaConsumer;
 
 @RunWith(SpringRunner.class)
@@ -22,8 +21,8 @@ public class ParserTest
 	@Autowired
 	private KafkaConsumer consumidorKafka;
 	
-	@Autowired
-	private InsercionDatosService insDatos;
+//	@Autowired
+//	private InsercionDatosService insDatos;
 	
 	@Test
 	public void parseadorCampos() {
