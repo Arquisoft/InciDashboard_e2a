@@ -27,7 +27,7 @@ public class ParserTest
 	
 	@Test
 	public void parseadorCampos() {
-		insDatos.init();
+		//insDatos.init();
 		
 		String incidencia = "Juan@Fuego en Oviedo@El parque San Francisco esta quemandose a causa de un cigarrillo mal apagado@"
 							+ "43.3616142$-5.8506767@Fuego$Parque@Temperatura:Alta$Fuego:Extremo@1521893518784";

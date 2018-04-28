@@ -32,7 +32,7 @@ public class LoginSteps {
   public void there_are_no_users() throws Throwable {
     cantidadBase = aService.prueba();
   }
-
+/*
   @When("^I create a user \"([^\"]*)\" with password \"([^\"]*)\"$")
   public void i_create_a_user_with_password(String arg1, String arg2) throws Throwable {
      aService.addAgent(new Agent(arg1, arg2, "1"));
@@ -44,6 +44,7 @@ public class LoginSteps {
      Assert.assertTrue(aService.prueba()==arg1+cantidadBase);
 
   }
+*/
   
 
 }

@@ -50,7 +50,7 @@ public class OperatorListarIncidenciasSteps {
 	List<Incidencia> list = new ArrayList<>() ;
 	Operator o ;
 
-  
+  /*
   @Given("^(\\d+) incidences$")
   public void incidences(int incidences) throws Throwable {
 	 oService.addOperator(new Operator("NonAddedOperator2", "pepe2"));
@@ -76,5 +76,6 @@ public class OperatorListarIncidenciasSteps {
   public void  he_see_incidences(int incidences) throws Throwable {
 	  //Assert.isTrue(list.size() == 3);
   }
+  */
 
 }
