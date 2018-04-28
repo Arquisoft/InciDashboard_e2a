@@ -8,9 +8,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import asw.Application;
 import asw.entities.Agent;
 import asw.entities.Campo;
 import asw.entities.Incidencia;
@@ -20,6 +22,7 @@ import asw.entities.Status;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 public class DashboardTest {
 	
 	private Agent a1, a2, a3;
@@ -29,10 +32,13 @@ public class DashboardTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		//	public Agent(String contrasena, String nombreUsuario, String kind, long kindCode, String dni, String nombre,
+
+		//String apellidos, String email
 		
-		a1 = new Agent("Pablo", "123456");
-		a2 = new Agent("Stephen", "123456");
-		a3 = new Agent("Albert", "123456");
+		a1 = new Agent("123456","Pablo", "Entity", 1, "111111Z", "Pablo", "Ramirez", "pablo@hotmail.com");
+		a2 = new Agent("123456","Juan", "Entity", 1, "211111Z", "Juan", "Martinez", "juan@hotmail.com");
+		a3 = new Agent("123456","Alberta", "Entity", 1, "311111Z", "Alberta", "Martinez", "alberta@hotmail.com");
 		
 		l1 = new Location(-10.0, 3.0);
 		l2 = new Location(10.0, 1.0);
@@ -69,6 +75,22 @@ public class DashboardTest {
 		inc4.addCampo(c8);
 		inc5.addCampo(c9); inc5.addCampo(c10);
 	}
+	
+	@Test
+	public void testAgentes() {
+		Assert.assertTrue(a1.getNombreUsuario() == "Pablo");
+		Assert.assertTrue(a2.getNombreUsuario() == "Juan");
+		Assert.assertTrue(a3.getNombreUsuario() == "Alberta");
+		
+		Assert.assertTrue(a1.getTipo() == "Entity");
+		Assert.assertTrue(a2.getTipo() == "Entity");
+		Assert.assertTrue(a3.getTipo() == "Entity");
+		
+		Assert.assertTrue(a1.getIncidencias().size() == 2);
+		Assert.assertTrue(a2.getIncidencias().size() == 1);
+		Assert.assertTrue(a3.getIncidencias().size() == 2);
+	}
+	
 	
 	@SuppressWarnings("serial")
 	@Test

@@ -1,5 +1,5 @@
 package asw.services;
-
+/*
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,7 +39,7 @@ public class InsercionDatosService
 	
 	
 	@SuppressWarnings("serial")
-	//@PostConstruct
+	@PostConstruct
 	public void init() {
 		// Creamos los agentes y operarios y los añadimos a la bbdd
 		//String contrasena, String nombreUsuario, String kind, long kindCode, String dni, String nombre,
@@ -237,3 +237,4 @@ public class InsercionDatosService
 	}
 	
 }
+*/
