@@ -38,35 +38,36 @@ import cucumber.api.java.en.When;
 @IntegrationTest
 @WebAppConfiguration
 public class IncidenciaCriticaSteps {
+	
 	@Autowired
 	IncidenceService iService;
 	Incidencia i ;
 
   
-  @Given("^a critic incidence with one critic value$")
-  public void a_critic_incidence_with_one_critic_value() throws Throwable {
-    Campo c = new Campo("temperatura", "Extrema", null, TipoCampos.CRITICO);
-    Incidencia i = new Incidencia("incP", null, null, null);
-    Set<Campo> s = new HashSet<Campo>();
-    s.add(c);
-    i.setCampos(s);
-    i.setTipoIncidencia();
-    iService.addIncidence(i);
-  }
-
-  @When("^I search it$")
-  public void i_search_it() throws Throwable {
-	 i = iService.getIncidences()
-			 .stream()
-			 .filter(x ->x.getNombre().equals("incP"))
-			 .findFirst()
-			 .orElse(null);
-  }
-
-  @Then("^it had critic state$")
-  public void  it_had_critic_state() throws Throwable {
-	  //
-	  Assert.isTrue(i.getTipoIncidencia().equals(TipoCampos.CRITICO));
-  }
+	@Given("^a critic incidence with one critic value$")
+	public void a_critic_incidence_with_one_critic_value() throws Throwable {
+	    Campo c = new Campo("temperatura", "Extrema", null, TipoCampos.CRITICO);
+	    Incidencia i = new Incidencia("incP", null, null, null);
+	    Set<Campo> s = new HashSet<Campo>();
+	    s.add(c);
+	    i.setCampos(s);
+	    i.setTipoIncidencia();
+	    iService.addIncidence(i);
+	}
+	
+	@When("^I search it$")
+	public void i_search_it() throws Throwable {
+		 i = iService.getIncidences()
+				 .stream()
+				 .filter(x ->x.getNombre().equals("incP"))
+				 .findFirst()
+				 .orElse(null);
+	}
+	
+	@Then("^it had critic state$")
+	public void  it_had_critic_state() throws Throwable {
+		//
+		Assert.isTrue(i.getTipoIncidencia().equals(TipoCampos.CRITICO));
+	}
 
 }

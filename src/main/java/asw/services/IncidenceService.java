@@ -98,6 +98,7 @@ public class IncidenceService {
 	
 	public int cantidadIncidenciasTipo(Status st) {
 		List<Incidencia> incidences = getIncidences();
+		System.err.println( incidences.size() );
 		int cont=0;
 		for (Incidencia incidence : incidences) {
 			if(incidence.getEstado().equals(st))

@@ -18,8 +18,8 @@ import asw.entities.Location;
 import asw.entities.Operator;
 import asw.entities.Status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
+@RunWith(SpringJUnit4ClassRunner.class)
 public class DashboardTest {
 	
 	private Agent a1, a2, a3;
@@ -113,21 +113,4 @@ public class DashboardTest {
 		Assert.assertTrue(inc2.getCampos().size() == 1);
 	}
 	
-	/*
-	@Test
-	public void getLanding() throws Exception {
-		String userURI = base.toString() + "/login";  
-		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
-		assertThat(response.getBody(), containsString("Login"));
-	}
-	*/
-	
-	/*
-	@Test
-	public void getUser() throws Exception {
-		String userURI = base.toString() + "/user";  
-		ResponseEntity<String> response = template.getForEntity(userURI, String.class);
-		UserInfo expected = new UserInfo("pepe",0);
-	}
-	*/
 }

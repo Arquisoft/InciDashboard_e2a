@@ -16,6 +16,7 @@ import asw.entities.Incidencia;
 import asw.entities.Location;
 import asw.entities.Operator;
 import asw.entities.Status;
+import asw.entities.TipoCampos;
 
 @Service
 public class InsercionDatosService 
@@ -86,15 +87,25 @@ public class InsercionDatosService
 				
 		// Creamos campos para incidencias y los añadimos a la bbdd
 		Campo c1 = new Campo("propiedad", "valor");
+		c1.setTipo(TipoCampos.NO_CRITICO);
 		Campo c2 = new Campo("nombre", "pablo");
+		c2.setTipo(TipoCampos.NO_CRITICO);
 		Campo c3 = new Campo("apellido", "diaz");
+		c3.setTipo(TipoCampos.NO_CRITICO);
 		Campo c4 = new Campo("ciudad", "gijon");
+		c4.setTipo(TipoCampos.NO_CRITICO);
 		Campo c5 = new Campo("estudia", "informatica");
+		c5.setTipo(TipoCampos.NO_CRITICO);
 		Campo c6 = new Campo("curso", "tercero");
+		c6.setTipo(TipoCampos.NO_CRITICO);
 		Campo c7 = new Campo("lugar", "oviedo");
+		c7.setTipo(TipoCampos.NO_CRITICO);
 		Campo c8 = new Campo("prueba", "valor prueba");
+		c8.setTipo(TipoCampos.NO_CRITICO);
 		Campo c9 = new Campo("propiedad", "de otra prueba");
+		c9.setTipo(TipoCampos.NO_CRITICO);
 		Campo c10 = new Campo("asignatura", "ASW");
+		c10.setTipo(TipoCampos.NO_CRITICO);
 		
 		Set<Campo> campos1 = new HashSet<Campo>() {{ add(c1); add(c2); }};
 		Set<Campo> campos2 = new HashSet<Campo>() {{ add(c3); }};
@@ -193,6 +204,15 @@ public class InsercionDatosService
 		inc4.setOperadorAsignado( op2 );
 		inc5.setOperadorAsignado( op3 );
 		inc6.setOperadorAsignado( op3 );
+		
+		// Actualizamos las incidencias a NO CRÍTICAS
+		inc1.setTipoIncidencia();
+		inc2.setTipoIncidencia();
+		inc3.setTipoIncidencia();
+		inc4.setTipoIncidencia();
+		inc5.setTipoIncidencia();
+		inc6.setTipoIncidencia();
+		
 		inciService.addIncidence( inc1 );
 		inciService.addIncidence( inc2 );
 		inciService.addIncidence( inc3 );
