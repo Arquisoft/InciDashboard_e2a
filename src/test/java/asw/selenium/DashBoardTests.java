@@ -139,9 +139,8 @@ public class  DashBoardTests{
 		PO_LoginView.fillForm(driver, "Pepe", "123456");
 		PO_View.checkElement(driver, "text", "Bienvenido");
     	driver.get(baseUrl + "/incidencias/list");
-    	PO_View.checkElement(driver, "free", "//td[contains(text(), 'Incidencia 1')]/following-sibling::"
-			+ "*/a[contains(@id, 'gestionar')]").get(0).click();
-    	PO_View.checkElement(driver, "text", "Gestionar");
+    	PO_View.checkElement(driver, "text", "Gestionar").get(0).click();
+    	PO_View.checkElement(driver, "text", "Gestionar incidencia");
     	 
 	}
 	
@@ -153,9 +152,8 @@ public class  DashBoardTests{
 		PO_LoginView.fillForm(driver, "Pepe", "123456");
 		PO_View.checkElement(driver, "text", "Bienvenido");
     	driver.get(baseUrl + "/incidencias/list");
-    	PO_View.checkElement(driver, "free", "//td[contains(text(), 'Incidencia 1')]/following-sibling::"
-			+ "*/a[contains(@id, 'detalles')]").get(0).click();
-    	PO_View.checkElement(driver, "text", "Detalles");
+    	PO_View.checkElement(driver, "text", "Detalles").get(0).click();
+    	PO_View.checkElement(driver, "text", "Detalles de la incidencia");
     	 
 	}
 	
