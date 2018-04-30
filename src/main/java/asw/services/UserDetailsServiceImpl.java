@@ -26,12 +26,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 		Operator operario = operatorRepository.findByUser(username);
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-
+		
 		grantedAuthorities.add(new SimpleGrantedAuthority(operario.getRole()));
 
 		User u = new User(operario.getName(), operario.getPassword(), grantedAuthorities);
 		return u;
 
 	}
-
+	
 }

@@ -15,23 +15,23 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TOperator")
 public class Operator {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
 	private String user;
 	private String password;
-
+	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "operadorAsignado", cascade = CascadeType.ALL)
 	private Set<Incidencia> incidencias = new HashSet<>();
-
+	
 	private String role;
-
-	public Operator() {
-	}
-
-	public Operator(String username, String password) {
+	
+	public Operator() {}
+	
+	public Operator(String username, String password)
+	{
 		super();
 		this.user = username;
 		this.password = password;
@@ -41,11 +41,13 @@ public class Operator {
 		this(name, password);
 		this.incidencias = incidencias;
 	}
-
-	public Operator(String name, String password, String role) {
+	
+	public Operator(String name, String password,String role) {
 		this(name, password);
-		this.role = role;
+		this.role=role;
 	}
+	
+	
 
 	public Long getID() {
 		return id;
@@ -71,6 +73,7 @@ public class Operator {
 		this.password = password;
 	}
 
+
 	public Set<Incidencia> getIncidencias() {
 		return incidencias;
 	}
@@ -78,11 +81,11 @@ public class Operator {
 	public void setIncidencias(Set<Incidencia> incidencias) {
 		this.incidencias = incidencias;
 	}
-
+	
 	public void setRole(String role) {
-		this.role = role;
+		this.role=role;
 	}
-
+	
 	public String getRole() {
 		return role;
 	}
@@ -112,6 +115,7 @@ public class Operator {
 		return true;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Operator [id=" + id + ", user=" + user + ", password=" + password + ", incidencias=" + incidencias
@@ -121,9 +125,10 @@ public class Operator {
 	public int getNumeroIncidencias() {
 		return incidencias.size();
 	}
-
-	public void addIncidencia(Incidencia i) {
-		incidencias.add(i);
+	
+	public void addIncidencia(Incidencia i)
+	{
+		incidencias.add( i );
 	}
 
 	public Long getId() {
@@ -141,5 +146,7 @@ public class Operator {
 	public void setUser(String user) {
 		this.user = user;
 	}
+	
+	
 
 }

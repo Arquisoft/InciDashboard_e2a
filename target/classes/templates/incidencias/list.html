@@ -18,17 +18,15 @@
 				<tr th:each="incidence : ${incidenceList}">
 					<td th:text="${incidence.nombre}"></td>
 					<td th:text="${incidence.estado}"></td>
-					<td><a id="gestionar"
-						th:href="${'/incidencias/edit/' + incidence.id}">Gestionar</a></td>
-					<td><a id="detalles"
-						th:href="${'/incidencias/details/' + incidence.id}">Detalles</a></td>
+					<td><a id="gestionar" th:href="${'/incidencias/edit/' + incidence.id}">Gestionar</a></td>
+					<td><a id="detalles" th:href="${'/incidencias/details/' + incidence.id}">Detalles</a></td>
 				</tr>
 			</table>
 		</div>
-		<footer th:replace="fragments/pagination" />
+		<footer th:replace="fragments/pagination" />	
 	</div>
 	<footer th:replace="fragments/footer" />
-
+	
 	<script src="/js/actualizaIncidencias.js"></script>
 
 </body>

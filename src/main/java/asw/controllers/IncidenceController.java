@@ -24,29 +24,29 @@ import asw.services.OperadorService;
 
 @Controller
 public class IncidenceController {
-
+	
 	@Autowired
 	private OperadorService operadorService;
-
+	
 	@Autowired
 	private IncidenceService inciService;
-
+	
 	@RequestMapping(value = "/incidencias/list")
 	public String indicencias(Model model, Pageable pageable, Principal principal) {
-		Operator operador = operadorService.getOperatorByName(principal.getName());
+		Operator operador = operadorService.getOperatorByName( principal.getName());
 		Page<Incidencia> incidences = new PageImpl<Incidencia>(new LinkedList<Incidencia>());
 		incidences = inciService.getIncidencessForOperator(pageable, operador);
 		model.addAttribute("incidenceList", incidences.getContent());
 		model.addAttribute("page", incidences);
 		return "incidencias/list";
 	}
-
+	
 	@RequestMapping("/incidencias/details/{id}")
 	public String getDetail(Model model, @PathVariable Long id) {
 		model.addAttribute("incidencia", inciService.getIncidence(id));
 		return "incidencias/details";
 	}
-
+	
 	@RequestMapping(value = "/incidencias/edit/{id}")
 	public String getEdit(Model model, @PathVariable Long id) {
 		List<Status> status = Arrays.asList(Status.values());

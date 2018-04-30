@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import asw.entities.Agent;
 
 @Repository
-public interface AgentRepository extends CrudRepository<Agent, Long> {
-
+public interface AgentRepository extends CrudRepository<Agent, Long>{
+	
 	Agent findByNombre(String nombre);
 
 }

@@ -19,47 +19,45 @@ import javax.persistence.TemporalType;
 @Entity
 public class Incidencia {
 
-	@Id
-	@GeneratedValue
-	Long id;
-
+	@Id @GeneratedValue Long id;
+	
 	@ManyToOne
 	private Agent agent;
-
+	
 	private String nombre;
-
-	@Column(length = 1000)
+	
+	@Column(length=1000)
 	private String descripcion;
-
+	
 	@OneToOne
 	private Location location;
-
-	@OneToMany(mappedBy = "incidencia")
+	
+	@OneToMany(mappedBy="incidencia")
 	private Set<Etiqueta> etiquetas = new HashSet<Etiqueta>();
-
-	@OneToMany(mappedBy = "incidencia")
-	private Set<Campo> campos = new HashSet<Campo>(); // propiedad/valor
-
+	
+	@OneToMany(mappedBy="incidencia")
+	private Set<Campo> campos = new HashSet<Campo>(); //propiedad/valor
+	
 	@Enumerated(EnumType.STRING)
 	private Status estado;
-
+	
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date fecha;
-
-	@Column(length = 1000)
+	
+	@Column(length=1000)
 	private String comentarioOperario;
-
+	
 	private TipoCampos tipoIncidencia;
 
-	private String entidadAsignada;
-
+	private String entidadAsignada; 
+	
 	@ManyToOne
 	private Operator operadorAsignado;
-
+	
 	public Incidencia() {
-
+		
 	}
-
+	
 	public Incidencia(String nombreInc, Location localizacion, Agent agente, Status status) {
 		this.nombre = nombreInc;
 		this.location = localizacion;
@@ -155,40 +153,40 @@ public class Incidencia {
 	public void setOperadorAsignado(Operator operadorAsignado) {
 		this.operadorAsignado = operadorAsignado;
 	}
-
+	
 	public void addCampo(Campo c) {
-		campos.add(c);
+		campos.add( c );
 	}
-
+	
 	public void addEtiqueta(Etiqueta e) {
-		etiquetas.add(e);
+		etiquetas.add( e );
 	}
-
+	
 	public String toStringCampos() {
 		String s = "";
-		for (Campo cp : campos)
-			s += cp.toString() + "\t";
+		for (Campo cp : campos) 
+			s+= cp.toString() + "\t";
 		return s;
 	}
-
+	
 	public String toStringEtiquetas() {
 		String s = "";
-		for (Etiqueta eq : etiquetas)
-			s += eq.getValor() + "\t";
+		for (Etiqueta eq : etiquetas) 
+			s+= eq.getValor() + "\t";
 		return s;
 	}
-
+	
 	public TipoCampos getTipoIncidencia() {
 		return tipoIncidencia;
 	}
 
 	public void setTipoIncidencia() {
-		for (Campo campo : campos) {
-			if (campo.getTipo().equals(TipoCampos.CRITICO)) {
+		for(Campo campo : campos){
+			if(campo.getTipo().equals(TipoCampos.CRITICO)){
 				this.tipoIncidencia = TipoCampos.CRITICO;
 			}
 		}
-		if (getTipoIncidencia() == null) {
+		if(getTipoIncidencia()==null){
 			this.tipoIncidencia = TipoCampos.NO_CRITICO;
 		}
 

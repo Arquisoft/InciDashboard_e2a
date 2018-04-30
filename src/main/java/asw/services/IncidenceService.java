@@ -24,78 +24,91 @@ import asw.repository.LocationRepository;
 
 @Service
 public class IncidenceService {
-
+	
 	@Autowired
 	public IncidenceRepository inciRepository;
-
+	
 	@Autowired
 	public CamposRepository camposRepository;
-
+	
 	@Autowired
 	LocationRepository locRepo;
-
+	
 	@Autowired
 	private EtiquetaRepository etRepository;
-
-	public void addIncidence(Incidencia incidence) {
-		inciRepository.save(incidence);
+	
+	
+	public void addIncidence(Incidencia incidence)
+	{
+		inciRepository.save( incidence );
 	}
-
+	
 	public Incidencia getIncidence(Long identificador) {
-		return inciRepository.findOne(identificador);
+		return inciRepository.findOne( identificador );
 	}
-
+	
 	public List<Incidencia> getIncidences() {
 		List<Incidencia> incidencias = new ArrayList<Incidencia>();
 		inciRepository.findAll().forEach(incidencias::add);
-
+		
 		return incidencias;
 	}
-
+	
 	public void addEtiqueta(Set<Etiqueta> etiquetas) {
-		for (Etiqueta e : etiquetas)
-			etRepository.save(e);
+		for(Etiqueta e : etiquetas)
+			etRepository.save( e );
 	}
-
-	public void addCampos(Set<Campo> campos) {
-		for (Campo c : campos) {
-			camposRepository.save(c);
+	
+	public void addCampos(Set<Campo> campos)
+	{
+		for (Campo c : campos)
+		{
+			camposRepository.save( c );
 		}
 	}
-
-	public void addCamposAIncidencia(Incidencia i, Set<Campo> campos) {
-		for (Campo c : campos) {
-			i.addCampo(c);
-			c.setincidencia(i);
+	
+	public void addCamposAIncidencia(Incidencia i, Set<Campo> campos)
+	{
+		for(Campo c : campos)
+		{
+			i.addCampo( c );
+			c.setincidencia( i );
 		}
 	}
-
+	
 	public void addEtiquetasAIncidencia(Incidencia i, Set<Etiqueta> etiquetas) {
-		for (Etiqueta e : etiquetas) {
-			i.addEtiqueta(e);
-			e.setIncidencia(i);
+		for(Etiqueta e : etiquetas)
+		{
+			i.addEtiqueta( e );
+			e.setIncidencia( i );
 		}
 	}
+	
 
 	public Page<Incidencia> getIncidencessForOperator(Pageable pageable, Operator user) {
 		Page<Incidencia> inci = new PageImpl<Incidencia>(new LinkedList<Incidencia>());
 		inci = inciRepository.findAllByUser(pageable, user);
 		return inci;
-	}
+	} 
 
-	public void addLocation(Location loc) {
-		locRepo.save(loc);
+	public void addLocation(Location loc)
+	{
+		locRepo.save( loc );
 	}
-
+	
 	public int cantidadIncidenciasTipo(Status st) {
 		List<Incidencia> incidences = getIncidences();
-		System.err.println(incidences.size());
-		int cont = 0;
+		System.err.println( incidences.size() );
+		int cont=0;
 		for (Incidencia incidence : incidences) {
-			if (incidence.getEstado().equals(st))
+			if(incidence.getEstado().equals(st))
 				cont++;
 		}
 		return cont;
 	}
+	
+
+	
+
 
 }

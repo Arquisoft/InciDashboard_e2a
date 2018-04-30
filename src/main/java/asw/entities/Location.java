@@ -51,7 +51,7 @@ public class Location {
 	public void setLongitud(double longitud) {
 		this.longitud = longitud;
 	}
-
+	
 	public Incidencia getIncidence() {
 		return incidencia;
 	}

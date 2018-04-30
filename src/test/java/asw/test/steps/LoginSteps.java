@@ -1,12 +1,23 @@
 package asw.test.steps;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.validation.constraints.AssertTrue;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import asw.entities.Agent;
 import asw.services.AgentService;
+import cucumber.api.PendingException;
 import cucumber.api.cli.Main;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import junit.framework.Assert;
 
 public class LoginSteps {
   

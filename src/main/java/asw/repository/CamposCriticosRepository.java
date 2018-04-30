@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import asw.entities.CamposCriticos;
 
 @Repository
-public interface CamposCriticosRepository extends CrudRepository<CamposCriticos, Long> {
+public interface CamposCriticosRepository extends CrudRepository<CamposCriticos, Long>
+{
 	CamposCriticos findByClave(String clave);
-
 	Page<CamposCriticos> findAll(Pageable page);
-}
+} 
