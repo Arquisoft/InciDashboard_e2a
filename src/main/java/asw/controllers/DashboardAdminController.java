@@ -19,14 +19,13 @@ public class DashboardAdminController {
 	private List<SseEmitter> sseEmitters = Collections.synchronizedList(new ArrayList<>());
 
 	/*
-	//@RequestMapping(value = "/newIncidence") 
-	@KafkaListener(topics = Topics.NEW_INCIDENCE)
-	public void newIncidence(String data) {
-		SseEventBuilder event = SseEmitter.event().name("newIncidence").data(data);
-		sendData(event); 
-	}
-	*/
-	
+	 * //@RequestMapping(value = "/newIncidence")
+	 * 
+	 * @KafkaListener(topics = Topics.NEW_INCIDENCE) public void newIncidence(String
+	 * data) { SseEventBuilder event =
+	 * SseEmitter.event().name("newIncidence").data(data); sendData(event); }
+	 */
+
 	public void sendData(SseEventBuilder event) {
 		synchronized (this.sseEmitters) {
 			for (SseEmitter sseEmitter : this.sseEmitters) {
@@ -39,7 +38,7 @@ public class DashboardAdminController {
 			}
 		}
 	}
-	
+
 	@CrossOrigin(origins = "http://localhost:8090") // manda respuesta a esta URL
 	@RequestMapping("/getEmitter")
 	public SseEmitter getEmitter() {
@@ -47,20 +46,18 @@ public class DashboardAdminController {
 	}
 
 	public SseEmitter newEmitter() {
-		
+
 		SseEmitter emitter = new SseEmitter(Long.MAX_VALUE); // el timeout
 		this.sseEmitters.add(emitter);
-		
+
 		emitter.onCompletion(() -> this.sseEmitters.remove(emitter));
 		emitter.onTimeout(() -> this.sseEmitters.remove(emitter));
-		
+
 		return emitter;
 	}
 
 	public List<SseEmitter> getSseEmitters() {
 		return sseEmitters;
 	}
-	
+
 }
-
-

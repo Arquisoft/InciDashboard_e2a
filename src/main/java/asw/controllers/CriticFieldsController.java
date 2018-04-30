@@ -18,26 +18,26 @@ import asw.services.CamposCriticosService;
 
 @Controller
 public class CriticFieldsController {
-	
+
 	@Autowired
 	private CamposCriticosService critiService;
-	
-	@RequestMapping(value="/campos")
+
+	@RequestMapping(value = "/campos")
 	public String mostrar(Model model, Pageable pageable) {
 		Page<CamposCriticos> campos = new PageImpl<CamposCriticos>(new LinkedList<CamposCriticos>());
-		campos=critiService.getAll(pageable);
+		campos = critiService.getAll(pageable);
 		model.addAttribute("criticList", campos.getContent());
 		model.addAttribute("page", campos);
 		return "criticos/list";
-		
+
 	}
-	
+
 	@RequestMapping(value = "/campos/modificar/{id}")
 	public String getEdit(Model model, @PathVariable Long id) {
 		model.addAttribute("campo", critiService.getCampo(id));
 		return "criticos/editFields";
 	}
-	
+
 	@RequestMapping(value = "/campos/modificar/{id}", method = RequestMethod.POST)
 	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute CamposCriticos cc) {
 		CamposCriticos ccModificar = critiService.getCampo(id);

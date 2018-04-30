@@ -40,10 +40,9 @@ public class Agent {
 
 	private String email;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="agent")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "agent")
 	Set<Incidencia> incidencias = new HashSet<Incidencia>();
 
-	
 	public Agent() {
 
 	}

@@ -14,13 +14,13 @@ import asw.services.OperadorService;
 public class EstadisticasController {
 	@Autowired
 	private IncidenceService inciService;
-	
+
 	@Autowired
 	private OperadorService operaService;
-	
+
 	@Autowired
 	private EtiquetaService etiquetaService;
-	
+
 	@RequestMapping("/estadisticas")
 	public String getStatistics(Model model) {
 		model.addAttribute("numeroTotalIncidencias", inciService.getIncidences().size());
@@ -30,9 +30,8 @@ public class EstadisticasController {
 		model.addAttribute("numeroTotalIncidenciasEnProceso", inciService.cantidadIncidenciasTipo(Status.EN_PROCESO));
 		model.addAttribute("operadorConMasIncidenciasHistoricas", operaService.findOperatorWithMoreIncidnces());
 		model.addAttribute("etiquetaMasUsada", etiquetaService.etiquetaMasUsada());
-		
+
 		return "estadisticas";
 	}
 
-	
 }

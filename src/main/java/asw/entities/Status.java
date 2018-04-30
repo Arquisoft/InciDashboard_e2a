@@ -1,6 +1,6 @@
 package asw.entities;
 
 public enum Status {
-	ABIERTO, CERRADO, ANULADA, EN_PROCESO 
+	ABIERTO, CERRADO, ANULADA, EN_PROCESO
 
 }

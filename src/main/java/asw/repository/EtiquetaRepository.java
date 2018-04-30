@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import asw.entities.Etiqueta;
 
-public interface EtiquetaRepository extends CrudRepository<Etiqueta, Long>{
+public interface EtiquetaRepository extends CrudRepository<Etiqueta, Long> {
 	List<Etiqueta> findAll();
 }
