@@ -1,6 +1,6 @@
 var eventSource = new EventSource("/getEmitter");
 
-eventSource.addEventListener("newIncidence", function(event) {
+eventSource.addEventListener("incidencias", function(event) {
 
 	var incidencia_json = JSON.parse(event.data);
 
@@ -19,21 +19,3 @@ eventSource.addEventListener("newIncidence", function(event) {
 	enlace_detalles.innerHTML = '<td><a href = "/incidencias/details/'+ incidencia_json.id +'">Detalles</a></td>';
 
 });
-
-/*
-setInterval(
-	function(){
-	    $.ajax({
-	        url: "http://localhost:8090/incidencias/list/actualizar",
-	        type: "GET",
-	        data: {},
-	        dataType: 'json',
-	        success: function(respuesta) {
-	            //$( "#contenedor-principal" ).load( "widget-canciones.html");
-	        },
-	        error : function (error)
-	        {}
-	    }
-	}, 
-5000);
-*/

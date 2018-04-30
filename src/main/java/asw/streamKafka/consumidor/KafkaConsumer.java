@@ -47,13 +47,13 @@ public class KafkaConsumer {
 	@Autowired
 	OperadorService opService;	
 
-    @KafkaListener(topics = Topics.NEW_INCIDENCE)
+    @KafkaListener(topics = Topics.incidencias)
     public void listen(String data) {
-    	//System.out.println(data);
+    	System.out.println(data);
         
        	String incidencia = parseToIncidence( data );
       
-        SseEventBuilder evento = SseEmitter.event().name((Topics.NEW_INCIDENCE)).data( incidencia );
+        SseEventBuilder evento = SseEmitter.event().name((Topics.incidencias)).data( incidencia );
         this.dsController.sendData(evento);
       
     }
