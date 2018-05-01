@@ -59,26 +59,21 @@ public class IncidenceService {
 			etRepository.save( e );
 	}
 	
-	public void addCampos(Set<Campo> campos)
-	{
-		for (Campo c : campos)
-		{
+	public void addCampos(Set<Campo> campos) {
+		for (Campo c : campos) {
 			camposRepository.save( c );
 		}
 	}
 	
-	public void addCamposAIncidencia(Incidencia i, Set<Campo> campos)
-	{
-		for(Campo c : campos)
-		{
+	public void addCamposAIncidencia(Incidencia i, Set<Campo> campos) {
+		for(Campo c : campos) {
 			i.addCampo( c );
 			c.setincidencia( i );
 		}
 	}
 	
 	public void addEtiquetasAIncidencia(Incidencia i, Set<Etiqueta> etiquetas) {
-		for(Etiqueta e : etiquetas)
-		{
+		for(Etiqueta e : etiquetas){
 			i.addEtiqueta( e );
 			e.setIncidencia( i );
 		}
@@ -91,24 +86,28 @@ public class IncidenceService {
 		return inci;
 	} 
 
-	public void addLocation(Location loc)
-	{
+	public void addLocation(Location loc) {
 		locRepo.save( loc );
 	}
 	
-	public int cantidadIncidenciasTipo(Status st) {
+	public int[] cantidadIncidenciasTipo() {
+		int contAbierto = 0;
+		int contCerrado = 0;
+		int contAnulada = 0;
+		int contEnProceso = 0;
 		List<Incidencia> incidences = getIncidences();
-		System.err.println( incidences.size() );
-		int cont=0;
 		for (Incidencia incidence : incidences) {
-			if(incidence.getEstado().equals(st))
-				cont++;
+			if(incidence.getEstado().equals(Status.ABIERTO))
+				contAbierto++;
+			else if(incidence.getEstado().equals(Status.CERRADO))
+				contCerrado++;
+			else if(incidence.getEstado().equals(Status.ANULADA))
+				contAnulada++;
+			else
+				contEnProceso++;
 		}
-		return cont;
+		return new int[] { contAbierto, contCerrado, contAnulada, contEnProceso};
 	}
-	
-
-	
 
 
 }

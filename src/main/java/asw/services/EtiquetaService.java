@@ -19,6 +19,11 @@ public class EtiquetaService {
 	}
 	
 	
+	
+	public String etiquetaMasUtilizada() {
+		return etiquetaRepository.etiquetaMasUtilizada().get(0);
+	}
+	
 	public String etiquetaMasUsada() {
 		List<String> yaUsada = new ArrayList<String>();
 		String etiqueta = "";

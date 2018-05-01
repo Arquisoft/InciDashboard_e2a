@@ -30,19 +30,16 @@ public class OperadorService {
 	public List<Operator> findAllOperators() {
 		List<Operator> operarios = new ArrayList<Operator>();
 		operatorRepository.findAll().forEach(operarios::add);
-		
 		return operarios;
 	}
 	
-	public void actualizarOperario(Operator op)
-	{
+	public void actualizarOperario(Operator op) {
 		operatorRepository.save( op );
 	}
 	
 	public Operator obtainOperatorForIncidence() {
 		RolesService rs = new RolesService();
 		List<Operator> list = operatorRepository.findAll();
-		System.err.println(list);
 		Collections.sort(list, new Comparator<Operator>() {
 		    @Override
 		    public int compare(Operator o1, Operator o2) {
@@ -50,10 +47,8 @@ public class OperadorService {
 		    }
 		});
 		for (Operator operator : list) {
-			System.err.println(operator);
-			if(operator.getRole().equals(rs.getRoles()[0])) {
+			if(operator.getRole().equals(rs.getRoles()[0])) 
 				return operator;
-			}
 		}
 		return null;
 	}
@@ -66,9 +61,12 @@ public class OperadorService {
 	public Operator findOperatorWithMoreIncidnces() {
 		List<Operator> operadores = findAllOperators();
 		Operator elegido = operadores.get(0);
+		int numeroIncidenciasElegido = elegido.getNumeroIncidencias();
 		for (Operator op : operadores) {
-			if(op.getNumeroIncidencias() > elegido.getNumeroIncidencias())
+			if(op.getNumeroIncidencias() > numeroIncidenciasElegido) {
 				elegido = op;
+				numeroIncidenciasElegido = elegido.getNumeroIncidencias();
+			}
 		}
 		return elegido;
 	}
