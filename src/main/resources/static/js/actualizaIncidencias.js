@@ -1,6 +1,6 @@
 var eventSource = new EventSource("/getEmitter");
 
-eventSource.addEventListener("incidencias", function(event) {
+eventSource.addEventListener("lll0s2u5-incidencias", function(event) {
 
 	var incidencia_json = JSON.parse(event.data);
 
