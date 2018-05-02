@@ -18,7 +18,6 @@ public class EtiquetaService {
 	}
 	
 	
-	
 	public String etiquetaMasUtilizada() {
 		return etiquetaRepository.etiquetaMasUtilizada().get(0);
 	}
