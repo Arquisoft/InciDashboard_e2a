@@ -17,15 +17,6 @@ import asw.Application;
 public class DashboardAdminController {
 
 	private List<SseEmitter> sseEmitters = Collections.synchronizedList(new ArrayList<>());
-
-	/*
-	//@RequestMapping(value = "/newIncidence") 
-	@KafkaListener(topics = Topics.NEW_INCIDENCE)
-	public void newIncidence(String data) {
-		SseEventBuilder event = SseEmitter.event().name("newIncidence").data(data);
-		sendData(event); 
-	}
-	*/
 	
 	public void sendData(SseEventBuilder event) {
 		synchronized (this.sseEmitters) {
