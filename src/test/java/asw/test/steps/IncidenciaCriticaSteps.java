@@ -4,8 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationContextLoader;
+import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.util.Assert;
@@ -20,8 +19,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-@ContextConfiguration(classes=Application.class, loader=SpringApplicationContextLoader.class)
-@IntegrationTest
+@ContextConfiguration(classes=Application.class, loader=SpringBootContextLoader.class)
+//@IntegrationTest
 @WebAppConfiguration
 public class IncidenciaCriticaSteps {
 	
