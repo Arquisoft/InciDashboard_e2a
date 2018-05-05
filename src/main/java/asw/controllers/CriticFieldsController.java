@@ -34,15 +34,15 @@ public class CriticFieldsController {
 	
 	@RequestMapping(value = "/campos/modificar/{id}")
 	public String getEdit(Model model, @PathVariable Long id) {
-		model.addAttribute("campo", critiService.getCampo(id));
+		model.addAttribute("campo", critiService.getCampo( id ));
 		return "criticos/editFields";
 	}
 	
 	@RequestMapping(value = "/campos/modificar/{id}", method = RequestMethod.POST)
 	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute CamposCriticos cc) {
-		CamposCriticos ccModificar = critiService.getCampo(id);
+		CamposCriticos ccModificar = critiService.getCampo( id );
 		ccModificar.setValor(cc.getValor());
-		critiService.addCampos(ccModificar);
+		critiService.addCampos( ccModificar );
 		return "redirect:/campos";
 	}
 }

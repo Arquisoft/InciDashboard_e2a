@@ -32,7 +32,12 @@ public class AgentService {
 	{
 		agentRepo.save( agente );
 	}
-	
+	/**
+	 * Este metodo se usa para los test de cucumber 
+	 * para sacar los operarios que hay en un momento dado en la base de datos y que las pruevas no 
+	 * colisionen entre si
+	 * @return
+	 */
 	public int prueba()
 	{
 		List<Agent> operarios = new ArrayList<Agent>();

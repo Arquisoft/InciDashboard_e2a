@@ -23,7 +23,12 @@ public class CamposCriticosService {
 	public void addCampoCritico(CamposCriticos cc) {
 		ccRepository.save( cc );
 	}
-	
+	/**
+	 * Los campos criticos se usan para saber si una incidencia es o no 
+	 * critica
+	 * @param pageable
+	 * @return
+	 */
 	public Page<CamposCriticos> getAll(Pageable pageable){
 		Page<CamposCriticos> campos = new PageImpl<CamposCriticos>(new LinkedList<CamposCriticos>());
 		campos=ccRepository.findAll(pageable);

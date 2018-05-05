@@ -1,6 +1,7 @@
 package asw.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -107,6 +108,16 @@ public class IncidenceService {
 				contEnProceso++;
 		}
 		return new int[] { contAbierto, contCerrado, contAnulada, contEnProceso};
+	}
+
+	public Incidencia findByDateAndUser(Date parseFecha, String nombre) {
+		// TODO Auto-generated method stub
+		return inciRepository.findByUserAndDate( parseFecha,nombre );
+	}
+
+	public void updateIncidence(Incidencia incidence) {
+		inciRepository.save( incidence );
+		
 	}
 
 

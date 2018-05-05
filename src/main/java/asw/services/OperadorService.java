@@ -57,7 +57,11 @@ public class OperadorService {
 		return operatorRepository.findByUser(name); 
 	}
 	
-	
+	/**
+	 * Este metodo se utiliza para encontrar el operador al que se le va a asignar
+	 * una incidencia en funcion de el numero de incidencias que tine cada uno
+	 * @return OperadorAsignado
+	 */
 	public Operator findOperatorWithMoreIncidnces() {
 		List<Operator> operadores = findAllOperators();
 		Operator elegido = operadores.get(0);

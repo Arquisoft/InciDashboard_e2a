@@ -35,7 +35,11 @@ public class InsercionDatosService
 	@Autowired
 	private CamposCriticosService ccService;
 	
-	
+	/**
+	 * Esta clase no seria necesaria despues del despliegue
+	 * ya que seran los propios modulos los que se encarguen de
+	 * rellenar con datos las base de datos
+	 */
 	@SuppressWarnings("serial")
 	//@PostConstruct
 	public void init() {

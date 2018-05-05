@@ -21,7 +21,13 @@ public class KafkaConsumer {
 	
 	@Autowired
 	ParserIncidencia parserInci;
-
+	/**
+	 * Este metodo es el listener de kafka que saltara cada vez que 
+	 * llegue un incidencia por kafka
+	 * Este metodo llamara a parseIncidence y esta quedara guardada
+	 * en la base de datos
+	 * @param incidencia en json
+	 */
     @KafkaListener(topics = Topics.incidencias)
     public void listen(String data) {
     	System.out.println(data);
