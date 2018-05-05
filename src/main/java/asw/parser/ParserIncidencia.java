@@ -182,56 +182,6 @@ public class ParserIncidencia implements Parser {
 	private Operator asignarOperarioRandom() {
 		return opService.obtainOperatorForIncidence();
 	}
-	/**
-	 * Este metodo se usaria si fuera manager quien cargara la incidencia en la base de datos
-	 * y se usaria para actualizar dicha incidencia y no duplicarla
-	 * @param data
-	 * @return
-	 */
-	public String parseToIncidenceAndUpdate(String data) {
-    	//NombreUsuario@nombreIncidencia@descripcion@localizacion@etiquetas_#1
-		//@listaCampos_#3@estado@entidadAsignada@comentarioOperario@caducidad
-    	
-		String[] camposSeparados=separaCampos(data);
-		Incidencia incidence=new Incidencia();
-		Agent agente = agentService.findByName(camposSeparados[0]);
-		//incidence = inciService.findByDateAndUser(parseFecha(camposSeparados[6]),agente.getNombre());
-		if(incidence == null)
-			incidence = new Incidencia();
-		//inciService.addIncidence( incidence ); // persistimos la incidencia en la bbdd
-		//agent
-		
-		incidence.setAgent( agente );
-		//nombreIncidencia
-		incidence.setNombre(camposSeparados[1]);
-		//descripcion
-		incidence.setDescripcion(camposSeparados[2]);
-		//localizacion
-		Location location = location(camposSeparados[3]);
-		incidence.setLocalizacion( location );
-		//etiquetas
-		Set<Etiqueta> etiquetas = etiquetas(camposSeparados[4]);
-		incidence.setEtiquetas( etiquetas );
-		//lista de campos
-		Set<Campo> campos = listaCampos(camposSeparados[5]);
-		incidence.setCampos( campos );
-		//estado
-		incidence.setEstado(Status.ABIERTO);
-		//comentario operario
-		Operator operario = asignarOperarioRandom();
-		incidence.setOperadorAsignado( operario );
-		//caducidad falta el parseo a date
-		incidence.setCaducidad(parseFecha(camposSeparados[6]));
-		// si tiene campos críticos, será crítica
-		incidence.setTipoIncidencia();
-		
-		actualizar(incidence, agente, location, etiquetas, campos, operario);
-		
-		inciService.updateIncidence( incidence );
-		
-		String json_incidencia = parseToJSON(incidence);
-		
-		return json_incidencia;
-	}
+	
 	
 }
