@@ -20,6 +20,5 @@ public interface IncidenceRepository extends CrudRepository<Incidencia, Long>{
 	
 	List<Incidencia> findAll();
 	
-	@Query("SELECT i FROM Incidencia i WHERE i.fecha = ?1 and i.agent.nombre = ?2")
-	Incidencia findByUserAndDate(Date parseFecha, String nombre);
+	
 }

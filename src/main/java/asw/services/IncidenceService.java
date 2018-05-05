@@ -110,10 +110,7 @@ public class IncidenceService {
 		return new int[] { contAbierto, contCerrado, contAnulada, contEnProceso};
 	}
 
-	public Incidencia findByDateAndUser(Date parseFecha, String nombre) {
-		// TODO Auto-generated method stub
-		return inciRepository.findByUserAndDate( parseFecha,nombre );
-	}
+	
 
 	public void updateIncidence(Incidencia incidence) {
 		inciRepository.save( incidence );

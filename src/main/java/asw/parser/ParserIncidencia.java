@@ -195,7 +195,7 @@ public class ParserIncidencia implements Parser {
 		String[] camposSeparados=separaCampos(data);
 		Incidencia incidence=new Incidencia();
 		Agent agente = agentService.findByName(camposSeparados[0]);
-		incidence = inciService.findByDateAndUser(parseFecha(camposSeparados[6]),agente.getNombre());
+		//incidence = inciService.findByDateAndUser(parseFecha(camposSeparados[6]),agente.getNombre());
 		if(incidence == null)
 			incidence = new Incidencia();
 		//inciService.addIncidence( incidence ); // persistimos la incidencia en la bbdd
