@@ -10,8 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import asw.Application;
+import asw.parser.ParserIncidencia;
 import asw.services.InsercionDatosService;
-import asw.streamKafka.consumidor.KafkaConsumer;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -19,8 +19,9 @@ import asw.streamKafka.consumidor.KafkaConsumer;
 @ActiveProfiles("test")
 public class ParserTest 
 {
+	
 	@Autowired
-	private KafkaConsumer consumidorKafka;
+	private ParserIncidencia parserIncidencia;
 	
 	@Autowired
 	private InsercionDatosService insDatos;
@@ -32,7 +33,7 @@ public class ParserTest
 		String incidencia = "Juan@Fuego en Oviedo@El parque San Francisco esta quemandose a causa de un cigarrillo mal apagado@"
 							+ "43.3616142$-5.8506767@Fuego$Parque@Temperatura:Alta$Fuego:Extremo@1521893518784";
 		
-		String inci_json = consumidorKafka.parseToIncidence(incidencia);
+		String inci_json = parserIncidencia.parseToIncidence(incidencia);
 		
 		Assert.assertTrue( inci_json.contains("\"nombre_incidencia\" : \"Fuego en Oviedo\"") );
 		Assert.assertTrue( inci_json.contains("\"estado\" : \"ABIERTO\"") );

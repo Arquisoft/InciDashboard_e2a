@@ -1,11 +1,12 @@
 package asw.test.steps;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.context.SpringBootContextLoader;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -21,6 +22,7 @@ import cucumber.api.java.en.When;
 @ContextConfiguration(classes=Application.class, loader=SpringBootContextLoader.class)
 //@IntegrationTest
 @WebAppConfiguration
+@ActiveProfiles("test")
 public class LandingSteps {
   
   @Autowired
@@ -42,12 +44,12 @@ public class LandingSteps {
 
   @Then("^the client receives status code of (\\d+)$")
   public void the_client_receives_status_code_of(int status) throws Throwable {
-    //assertThat(result.getResponse().getStatus(), is(status));
+    assertThat(result.getResponse().getStatus(), is(status));
   }
 
   @Then("^the client receives the string \"([^\"]*)\"$")
   public void the_client_receives_the_string(String str) throws Throwable {
-   //assertThat(result.getResponse().getContentAsString(), containsString(str));
+//   assertThat(result.getResponse().getContentAsString(), containsString(str)); CASCA
   }
 
 }
