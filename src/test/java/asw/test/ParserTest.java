@@ -10,8 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import asw.Application;
-import asw.parser.ParserIncidencia;
 import asw.services.InsercionDatosService;
+import asw.streamKafka.parser.ParserIncidencia;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)

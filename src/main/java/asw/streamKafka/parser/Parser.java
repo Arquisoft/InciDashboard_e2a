@@ -1,4 +1,4 @@
-package asw.parser;
+package asw.streamKafka.parser;
 
 import asw.entities.Incidencia;
 

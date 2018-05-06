@@ -9,8 +9,8 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder;
 
 import asw.controllers.DashboardAdminController;
-import asw.parser.ParserIncidencia;
 import asw.streamKafka.Topics;
+import asw.streamKafka.parser.ParserIncidencia;
 
 
 @ManagedBean
