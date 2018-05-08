@@ -6,6 +6,8 @@
 
 Dashboard - e2a
 
+Módulo ya desplegado en http://35.180.43.248:8090/login
+
 # Autores
 
 * César Camblor García (@UO251281)
@@ -21,7 +23,7 @@ Dashboard - e2a
 Este repositorio pertenece a la parte *Dashboard* del grupo de trabajo **E2a**,
 encargada de mostrar, en un panel de control, las incidencias enviadas por agentes y asignadas a los operarios.
 
-## Cómo ejecutar el proyecto
+## Cómo ejecutar el proyecto en local
 
 ### Base de datos HSQLDB (versión 2.4.0)
 La base de datos a utilizar es HSQLDB (**Se puede descargar [aquí](https://sourceforge.net/projects/hsqldb/files/latest/download?source=files)**). A continuación, simplemente se ejecuta el fichero bin/startup.bat.
@@ -79,10 +81,6 @@ C:\...\kafka_2.11-0.10.2.0>bin\windows\kafka-console-producer.bat --broker-list 
 Juan@Fuego en Oviedo@El parque San Francisco esta quemandose a causa de un cigarrillo mal apagado@43.3616142$-5.8506767@Fuego$Parque@Temperatura:Alta$Fuego:Extremo@1521893518784
 ```
 
-### Como ejecutar las pruebas con Selenium:
-Primero descargaremos el Firefox46 portable que nos ejecutará las pruebas. [Enlace aquí](https://unioviedo-my.sharepoint.com/:u:/g/personal/uo251561_uniovi_es/EUm3V6zrxuFFuvwX1aAxZzMBEzYnI7TKGxvIpe1zZLq7mw?e=0q0Piz)
-
-Despues en la clase DashBoardTests.java, llegaremos a ella siguiendo la siguiente jerarquía  /dashboard0/src/test/java/asw/selenium/DashBoardTests.java hay que modificar la variable PathFirefox y sustituirla
-por el path donde se haya descargado el Firefox. 
-
-Ya en la propia clase podremos ejecutar las pruebas.
+### Gatling
+Hemos usado Gatling para las pruebas de carga de la aplicación.
+**[Aquí](https://unioviedo-my.sharepoint.com/:f:/g/personal/uo251017_uniovi_es/Eq7YPC8qQaREqJ95vVEEEQoBHETV4_TOcZ3cyyUAmlfhkg?e=bLeKSY)** puedes encontrar toda la información necesaria de las pruebas de carga. Descarga la carpeta, y abre el fichero index.html.
