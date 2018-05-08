@@ -1,86 +1,91 @@
-# Dashboard_e2a
+# InciDashboard_e2a #
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a963e9cc71c4f0c951250172abd6d15)](https://www.codacy.com/app/PablooD9/InciDashboard_e2a?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/InciDashboard_e2a&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/Arquisoft/InciDashboard_e2a.svg?branch=master)](https://travis-ci.org/Arquisoft/InciDashboard_e2a)
 [![codecov](https://codecov.io/gh/Arquisoft/InciDashboard_e2a/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/InciDashboard_e2a)
 
-Dashboard - e2a
+Este repositorio contiene el código de uno de los submódulos del proyecto: Gestión de Incidencias de la asignatura Arquitectura del Software del grado Ingeniería Informática del Software. Para ver más información visite el [repositorio principal](https://github.com/Arquisoft/inci_e2a).
 
-Módulo ya desplegado en http://35.180.43.248:8090/login
+## AUTORES 2017-2018 ##
 
-# Autores
+La versión que contiene este repositorio fue desarrollada en su totalidad por los siguientes usuarios:
++ César Camblor García.
+> [@cesarcamblor](https://github.com/cesarcamblor)
 
-* César Camblor García (@UO251281)
+> @UO251281
 
-* Pablo Díaz Rancaño (@UO251017)
++ Pablo Díaz Rancaño.
+> [@PablooD9](https://github.com/PablooD9)
 
-* Fernando De la Torre Cueva (@UO245182)
+> @UO251017
 
-* Pablo Álvarez Álvarez (@UO251561)
++ Fernando De la Torre Cueva.
+> [@Ferpobe](https://github.com/ferpobe)
 
-## Introducción al repositorio
+> @UO245182
 
-Este repositorio pertenece a la parte *Dashboard* del grupo de trabajo **E2a**,
-encargada de mostrar, en un panel de control, las incidencias enviadas por agentes y asignadas a los operarios.
++ Pablo Álvarez Álvarez.
+> [@PabloAlvarezUO251561](https://github.com/PabloAlvarezUO251561)
 
-## Cómo ejecutar el proyecto en local
+> @UO251561
+- - - -
 
-### Base de datos HSQLDB (versión 2.4.0)
-La base de datos a utilizar es HSQLDB (**Se puede descargar [aquí](https://sourceforge.net/projects/hsqldb/files/latest/download?source=files)**). A continuación, simplemente se ejecuta el fichero bin/startup.bat.
+## Introducción al repositorio ##
 
-### Apache Zookeeper y Apache Kafka
-Para poder ejecutar Apache Zookeeper y Apache Kafka, puedes descargar la carpeta desde [aquí](https://unioviedo-my.sharepoint.com/:u:/g/personal/uo251017_uniovi_es/EQPNYDwHknpCtZI1U1wK7QUBIEoZVywWTvmwFfO3upoA-A?e=kh1lYE).
+Este repositorio pertenece a la parte *InciDashboard* del grupo de trabajo **E2A**, encargada de gestionar un panel de control de incidencias desplegado en la web desde el cual se puedan visualizar que incidencias tienen asignadas los diferentes operarios asi como detalles de las mismas.
 
-Una vez descargado el zip del paso anterior, abre la línea de comandos en la carpeta raíz de la carpeta *kafka_2.11-0.10.2.0*.
+## Como probar el proyecto ##
+Los pasos a seguir en esta guía están preparados para ser ejecutados en una maquina con un sistema operativo Windows. En el caso de querer probarlo en una maquina Linux, compruebe el repositorio [inicial](https://github.com/Arquisoft/inci_e2a).
 
-Para Windows, ejecuta estos dos comandos en orden (el primero abre Zookeeper. El segundo, Apache Kafka):
+Lo primero es comprobar que tenemos una versión de Java y Maven funcionando en el sistema. Para ello vamos a abrir un terminal del sistema:
+1.	Presionamos en las teclas Windows + R.
+2.	En la ventana que se abre escribimos: *cmd* y damos a la tecla Intro.
+3.	Una vez abierto el terminal escribimos esta orden y nos debería mostrar algo similar a la imagen de la izquierda.
 ```bash
-C:\...\kafka_2.11-0.10.2.0>bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+java -version
 ```
+4.	Despues escribimos esta otra orden y nos debería mostrar algo similar a la imagen de la derecha.
 ```bash
-C:\...\kafka_2.11-0.10.2.0>bin\windows\kafka-server-start.bat config\server.properties
+mvn -version
 ```
+![versiones](https://github.com/Arquisoft/inci_e2a/blob/master/readme_imagenes/Version_Java_Maven.png)
+En el caso de que esto no funcione, vuelva a instalar Java o Maven y pruebe de nuevo.
 
-Para Linux:
+Ahora nos descargaremos la versión zip del repositorio:
+![descargar_zip](https://github.com/Arquisoft/inci_e2a/blob/master/readme_imagenes/Descarga_Dashboard.png)
+
+Descomprimimos el archivo, lo que nos creará una carpeta con el mismo nombre. 
+![zip](https://github.com/Arquisoft/inci_e2a/blob/master/readme_imagenes/Zip_Dashboard.png)
+
+Una vez dentro hacemos clic en el explorador de archivos y escribimos *cmd* lo que nos abrirá un terminal del sistema en la ruta actual.
+Para asegurarnos de que se están creado bien las dependencias del proyecto, vamos a comprobar previamente el correcto funcionamiento de las pruebas con la orden:
 ```bash
-tu_prompt#kafka_2.11-0.10.2.0>bin/zookeeper-server-start.sh config/zookeeper.properties
+mvn test
 ```
+Este proceso tardará alrededor de 2 minutos en completarse y, si todo ha ido bien, debería aparecer algo similar a la siguiente imagen:
+![test](https://github.com/Arquisoft/inci_e2a/blob/master/readme_imagenes/Test_Dashboard.png)
+
+Ahora vamos a ejecutar la aplicación. Para ello vamos a ejecutar el comando:
 ```bash
-tu_prompt#kafka_2.11-0.10.2.0>bin/kafka-server-start.sh config/server.properties
+mvn spring-boot:run"
 ```
+Tras unos 15 segundos, veremos una imagen similar a la siguiente que nos indicará que la aplicación esta lanzada.
+![ejecucion](https://github.com/Arquisoft/inci_e2a/blob/master/readme_imagenes/Ejecucion_Dashboard.png)
 
-A continuación, sitúate en la carpeta raíz del proyecto del repositorio, y ejecuta el siguiente comando:
-```bash
-C:\...\proyecto_dashboard>mvn spring-boot:run
-```
+### Servicio Web ###
+Para comprobar su correcto funcionamiento abriremos un navegador web y visitaremos la siguiente url:
 
-### Ya tengo todo listo. ¿Cómo puedo enviar una incidencia?
-Abre una nueva terminal desde la carpeta *kafka_2.11-0.10.2.0*, y ejecuta el siguiente comando:
+[http://localhost:8090](http://localhost:8090)
 
-**NOTAS ANTES DE EJECUTAR** 
-* La latitud y la longitud corresponden a la localización de la incidencia, separados por el símbolo del dollar ($).
-* Las etiquetas se separan por el símbolo del dollar ($). Ejemplo -> Fuego$Alud$Terremoto ...
-* La lista de campos clave valor funciona de la siguiente manera: Fuego:Extremo$Altitud:Normal$Temperatura:Normal ...
-* Para convertir la fecha de la incidencia a milisegundos, [pulse aquí](https://espanol.epochconverter.com/)
+Lo que nos debería llevar a una pagina web con el siguiente aspecto.
+![funcionamiento](https://github.com/Arquisoft/inci_e2a/blob/master/readme_imagenes/Funcionamiento_Dashboard.png)
+Para probar como se ve por dentro tenemos dos opciones: entrar como operario o entrar como administrador. El operario podrá ver las incidencias y el administrador podrá gestionar los campos críticos. Ambos usuarios pueden consultar las estadísticas:
+* Operario.
+    * Usuario: Juan
+    * Contraseña: 123456
+* Administrador. 
+    * Usuario: Pablo
+    * Contraseña: 123456
 
-WINDOWS
-```bash
-C:\...\kafka_2.11-0.10.2.0>bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic newIncidence
-Nombre agente@Nombre incidencia@Descripcion de la incidencia@Latitud$Longitud@Etiquetas@Lista de campos clave valor@Fecha en milisegundos
-```
-
-LINUX
-```bash
-tu_prompt#kafka_2.11-0.10.2.0>bin/kafka-console-producer.sh --broker-list localhost:9092 --topic newIncidence
-Nombre agente@Nombre incidencia@Descripcion de la incidencia@Latitud$Longitud@Etiquetas@Lista de campos clave valor@Fecha en milisegundos
-```
-
-Un ejemplo para copiar y pegar:
-```bash
-C:\...\kafka_2.11-0.10.2.0>bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic newIncidence
-Juan@Fuego en Oviedo@El parque San Francisco esta quemandose a causa de un cigarrillo mal apagado@43.3616142$-5.8506767@Fuego$Parque@Temperatura:Alta$Fuego:Extremo@1521893518784
-```
-
-### Gatling
-Hemos usado Gatling para las pruebas de carga de la aplicación.
-**[Aquí](https://unioviedo-my.sharepoint.com/:f:/g/personal/uo251017_uniovi_es/Eq7YPC8qQaREqJ95vVEEEQoBHETV4_TOcZ3cyyUAmlfhkg?e=bLeKSY)** puedes encontrar toda la información necesaria de las pruebas de carga. Descarga la carpeta, y abre el fichero index.html.
+## Gatling ##
+Hemos usado Gatling para las pruebas de carga de la aplicación. Para ver los resultados descargue la carpeta que aparece en [este directorio]( https://unioviedo-my.sharepoint.com/:f:/g/personal/uo251017_uniovi_es/Eq7YPC8qQaREqJ95vVEEEQoBHETV4_TOcZ3cyyUAmlfhkg?e=iVJfff) y abra el fichero index.html
