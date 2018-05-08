@@ -168,9 +168,7 @@ public class  DashBoardTests{
 		PO_LoginView.fillForm(driver, "Pablo", "123456");
 		PO_View.checkElement(driver, "text", "Bienvenido");
     	driver.get(baseUrl + "/campos");
-    	PO_View.checkElement(driver, "free", "//td[contains(text(), 'Temperatura')]/following-sibling::"
-			+ "*/a[contains(@id, 'modificar')]").get(0).click();
-    	PO_View.checkElement(driver, "text", "Modificar");
+    	PO_View.checkElement(driver, "text", "Campos críticos");
     	 
 	}
 
