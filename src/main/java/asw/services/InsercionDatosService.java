@@ -2,6 +2,7 @@ package asw.services;
 
 import java.util.HashSet;
 import java.util.Set;
+//import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,8 +47,8 @@ public class InsercionDatosService
 		// Creamos los agentes y operarios y los añadimos a la bbdd
 		//String contrasena, String nombreUsuario, String kind, long kindCode, String dni, String nombre,
 		//String apellidos, String email) 
-		Agent agente1 = new Agent("123456","Pepe", "Entity", 1, "111111Z", "Pepe", "Ramirez", "pepe@hotmail.com");
-		Agent agente2 = new Agent("123456","Juan", "Entity", 1, "211111Z", "Juan", "Martinez", "juan@hotmail.com");
+		Agent agente1 = new Agent("123456","Carmena", "Entity", 1, "111111Z", "Carmena", "Ramirez", "carmena@hotmail.com");
+		Agent agente2 = new Agent("123456","JoseLuis", "Entity", 1, "211111Z", "JoseLuis", "Martinez", "joseLuis@hotmail.com");
 		Agent agente3 = new Agent("123456","Alberta", "Entity", 1, "311111Z", "Alberta", "Martinez", "alberta@hotmail.com");
 		
 		agentsService.addAgent( agente1 );

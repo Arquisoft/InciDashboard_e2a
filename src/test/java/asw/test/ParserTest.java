@@ -30,7 +30,7 @@ public class ParserTest
 	public void parseadorCampos() {
 		insDatos.init();
 		
-		String incidencia = "Juan@Fuego en Oviedo@El parque San Francisco esta quemandose a causa de un cigarrillo mal apagado@"
+		String incidencia = "Carmena@Fuego en Oviedo@El parque San Francisco esta quemandose a causa de un cigarrillo mal apagado@"
 							+ "43.3616142$-5.8506767@Fuego$Parque@Temperatura:Alta$Fuego:Extremo@1521893518784";
 		
 		String inci_json = parserIncidencia.parseToIncidence(incidencia);
